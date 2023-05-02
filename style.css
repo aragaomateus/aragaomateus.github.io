@@ -188,13 +188,13 @@ color: #555;
   
   .timeline-dot {
     display: inline-block;
-    width: 12px;
-    height: 14px;
+    width: 15px;
+    height: 15px;
     background: #2274A5;
     border-radius: 50%;
     position: absolute;
     top: 50%;
-    left: 60px;
+    left: 34px;
     top:1px;
     transform: translateY(50%);
     margin-bottom: 4px;
@@ -275,4 +275,26 @@ border-radius: 5px;
 
 .btn:hover {
 background-color: #185a83;
+}
+
+pre {
+  background-color: #f4f4f4;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 1rem;
+  font-family: 'Courier New', monospace;
+  overflow-x: auto;
+}
+
+code {
+  font-family: 'Courier New', monospace;
+}
+.project-page, .blog-post-page {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.project-page h1, .blog-post-page h1 {
+  font-size: 24px;
+  margin-bottom: 1rem;
 }
