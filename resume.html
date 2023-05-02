@@ -4,12 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
   <title>Resume | Personal Website</title>
 </head>
 <body>
   <header>
     <nav>
-      <a href="about.html">About</a>
+      <a href="index.html">About</a>
       <a href="resume.html">Resume</a>
       <a href="projects.html">Projects</a>
       <a href="contact.html">Contact</a>
@@ -17,14 +22,43 @@
   </header>
   
   <main>
-    <section id="about">
-      <h1>Resume</h1>
-      <p>Dummy data for the About page.</p>
-    </section>
+
+    <div class="container">
+      <section class="resume-section">
+        <h2>Education</h2>
+        <!-- Your education details go here -->
+      </section>
+      <section class="resume-section">
+        
+        <h2>Experience</h2>
+        <div class="experience">
+          <div class="experience-header">
+            <h4>Company Name<span class="tab"></span>2021 - Present</h4>
+          </div>
+          <p>data engineer </p>
+          <ul class="experience-details">
+            <li>Responsibility or achievementwdowhdwhodiwhdhwodhwhdwhd</li>
+            <li>Another responsibility or achievement gdwgwoguwogdowgugdogwg</li>
+            <!-- Add more responsibilities or achievements -->
+          </ul>
+        </div>
+        <!-- Add more experience entries -->
+      </section>
+      <section class="resume-section">
+        <h2>Skills</h2>
+        <div class="row">
+          <!-- Add skills as badges -->
+          <span class="badge badge-primary m-1">Python</span>
+          <span class="badge badge-primary m-1">SQL</span>
+          <span class="badge badge-primary m-1">Pytorch</span>
+        </div>
+      </section>
+    </div>
   </main>
   
+  
   <footer>
-    <p>&copy; Your Name. All rights reserved.</p>
+    <p>&copy; Mateus Silva Aragao. All rights reserved.</p>
   </footer>
 </body>
 </html>
