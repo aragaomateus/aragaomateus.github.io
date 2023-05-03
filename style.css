@@ -75,8 +75,8 @@ margin-bottom: 1rem;
 padding: 1rem;
 }
 .project-image {
-    width: 150px;
-    height: 150px;
+    width: 400px;
+    height: 350px;
     object-fit: cover;
     margin-right: 0.5rem;
     margin-bottom: 1rem;
@@ -137,11 +137,11 @@ margin-top: 1rem;
 .social-icons i {
 font-size: 24px;
 margin: 0 0.5rem;
-color: #131B23;
+color: #fefefe;
 }
 
 .social-icons a:hover i {
-color: #555;
+color: #E7DFC6;
 }
   
 .badge {
