@@ -3,13 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="style.css">
 
   <title>Mateus</title>
 </head>
@@ -57,6 +59,10 @@
             actionable insights
             to clients and stakeholders.
         </p>
+
+          <h4>Hobbies</h4>
+            <p>Running,Coding,
+              Collecting Vinyl Records and Reading non-fiction books </p> 
           <a href="resume.html" class="btn btn-primary">Resume</a>
           
         </div>
@@ -64,6 +70,49 @@
       </section>
     </div>
     <!-- OBS: I need to finish each written part so i can make this feature live-->
+    <section id="highlights">
+      <div class="container">
+        <h2 class="mb-3">Highlights</h2>
+        <div class="row">
+          <!-- Card 1 -->
+          <div class="col-md-4">
+            <div class="card mb-4 shadow-sm" onclick="location.href='/projects/music_classification.html';">
+
+              <img src="images/music.jpeg" class="card-img-top" alt="Project 1" style="height: 200px; object-fit: cover;">
+              <div class="card-body">
+                <h5 class="card-title">Music Genre Classification</h5>
+                <p class="card-text">In this project, we tackled a multi-class classification problem of music genre prediction based
+                  on audio features. </p>
+              </div>
+            </div>
+          </div>
+    
+          <!-- Card 2 -->
+          <div class="col-md-4">
+            <div class="card mb-4 shadow-sm" onclick="location.href='/projects.html';">
+              <img src="images/matching.jpeg" class="card-img-top" alt="Project 2" style="height: 200px; object-fit: cover;">
+              <div class="card-body">
+                <h5 class="card-title">MatchingNeeds Project</h5>
+                <p class="card-text"> The goal of this app is to connect NYU students
+                   with each other based on the classes they are currently taking and
+                    the ones they've taken in the past.</p>
+              </div>
+            </div>
+          </div>
+    
+          <!-- Card 3 -->
+          <div class="col-md-4">
+            <div class="card mb-4 shadow-sm" onclick="location.href='/projects.html';">
+              <img src="images/spectogram.png" class="card-img-top" alt="Project 3" style="height: 200px; object-fit: cover;">
+              <div class="card-body">
+                <h5 class="card-title">Generating Sounds</h5>
+                <p class="card-text">Adapting Condional GANs, used for image generation to generate spectogram representaions of audio samples.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
     
     <!-- <section class="container">
       <h2>Last 5 years</h2>
@@ -148,17 +197,9 @@
         </div>
     </div>
       
-    </section> -->
-    
-    <section class="container">
-      <h2>Hobbies</h2>
-      <ul>
-        <li>Running</li>
-        <li>Coding</li>
-        <li>Collecting Vinyl Records</li>
-        <li>Reading non-fiction books</li>
-      </ul>
     </section>
+     -->
+
       
   </main>
   

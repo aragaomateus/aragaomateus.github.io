@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <link rel="stylesheet" href="style.css">
 
   <title>Projects | Personal Website</title>
 </head>
@@ -31,6 +31,40 @@
       <h1>Projects</h1>
       <div class="container">
         <!-- Add more projects after the end of the semester -->
+
+        <!-- the capstone project for music genre classification  -->
+        <section class="project row">
+          <div class="col-md-4">
+            <img src="images/music.jpeg"alt="Project image" class="project-image img-thumbnail">
+          </div>
+          <div class="col-md-8 project-text">
+            <!-- the line above should be un commented once I finish wrtting the 
+            content for the project -->
+            <h3><a href="/projects/music_classification.html">Classification of Music Genres: A capstone project</a></h3>
+            <!-- <h3>Classification of Music Genres: A capstone project</h3> -->
+            <p class="project-date">May 10, 2023</p> 
+
+            <p>
+              In this project, we tackled a multi-class classification problem of music genre prediction based
+               on audio features. A range of machine learning models were tested, including logistic regression, 
+               random forest, support vector machines, k-nearest neighbors, and XGBoost, on a dataset that was 
+               processed with various dimensionality reduction techniques. XGBoost yielded the highest AUC-ROC 
+               score but did not reach satisfactory accuracy. This led us to further refine our XGBoost model 
+               with hyperparameters and incorporate it with a One-vs-Rest strategy and Stratified K-Fold cross-validation.
+              Despite our best efforts, we encountered limitations in achieving satisfactory accuracy. In the future, 
+              alternative preprocessing steps, model tuning, or different modeling techniques may need to be explored 
+              to improve performance.
+          </p>
+          
+          <p>
+              Skill: Python, Sklearn, Pytorch, Data Science.
+          </p>
+            <a href="https://github.com/aragaomateus/fundamentalsOfML/tree/master/capstone%20Project" class="btn btn-primary">View on GitHub</a>
+          </div>
+        </section>
+
+
+<!-- the stream lit app project for matching -->
         <section class="project row">
           <div class="col-md-4">
             <img src="images/matching.jpeg"alt="Project image" class="project-image img-thumbnail">
@@ -40,6 +74,8 @@
             content for the project -->
             <!-- <h3><a href="project.html">MatchingNeeds Project</a></h3> -->
             <h3>MatchingNeeds Project</h3>
+            <p class="project-date">April 20, 2023</p> 
+
 
             <p>
               A Streamlit app designed to connect college students, helping each other with classes
@@ -61,6 +97,8 @@
           </div>
           <div class="col-md-8 project-text">
             <h3>Generating Sounds Samples</h3>
+            <p class="project-date">Dec 12, 2022</p> 
+
             <p>
               A project for the deep learning class at NYU. Developed together with Leo Dupire.
               Currently adapting Condional GANs, used for image generation to generate spectogram
@@ -80,6 +118,8 @@
           </div>
           <div class="col-md-8 project-text">
             <h3>MentorMe - MERN Stack Web Application Group Project</h3>
+            <p class="project-date">May 5, 2022</p> 
+
             <p>
               Responsible for front-end, back-end and database development of the project.
               Developed app maps, wireframes, and prototypes during project design phase.

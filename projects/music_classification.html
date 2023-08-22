@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <link rel="stylesheet" href="/style.css">
+<title>Music Genre Classification</title>
+
+</head>
+<body>
+  <!-- Navigation -->
+  <header>
+    <nav>
+      <a href="/index.html">About</a>
+      <a href="/resume.html">Resume</a>
+      <a href="/projects.html">Projects</a>
+      <!-- <a href="blog.html">Blog</a> -->
+      <a href="/contact.html">Contact</a>
+    </nav>
+  </header>
+  <!-- Add your existing navigation code here -->
+<h1>Music Genre Classification</h1>
+  <section class="container mt-4">
+    <div class="project-page">
+      
+        <h4>The Fundamentals of Machine Learning Capstone Project </h4>
+        
+        <h5 style="font-weight: bold;">The Final Model </h5>
+        <p> 
+          The final model selected for this project was XGBoost. More specifically, 
+          the model implemented was an XGBoost Classifier, configured as a One-vs-Rest Classifier. 
+          The model was defined with 180 estimators, a maximum depth of 25, a learning rate of 0.25, 
+          and an evaluation metric of 'mlogloss'. XGBoost is a potent gradient-boosting algorithm, renowned 
+          for its efficacy across a broad range of classification problems. Gradient boosting is a machine 
+          learning technique where new models are created that predict the residuals or errors of prior models, then added together to make the final prediction. It leverages the idea of transforming weak learners into strong learners, thereby continually improving the model's accuracy.
+        </p>
+        <p> 
+          Compared to a Random Forest Classifier, XGBoost often demonstrates superior performance due to its ability to limit overfitting, as it incorporates a regularization term in its loss function which a random forest does not. It adds a penalty for complexity, resulting in simpler and more generalizable models.XGBoost's robustness and efficiency stem from its distinct loss function. Unlike AdaBoost, which uses an exponential loss function, XGBoost uses a more robust loss function called the 'logistic loss function.' This function is less sensitive to outliers in the data, making it less likely to overfit the training data.
+        </p>
+        <p> 
+
+          In this project, the XGBoost model was trained on the entire dataset, bypassing any form of dimensionality reduction. This decision was based on prior tests showing that the model performed better without dimensionality reduction.
+        </p>
+        <h5 style="font-weight: bold;">Evaluation Metric </h5>
+
+          <p> 
+          The Area Under the ROC Curve (AUC-ROC) is the evaluation metric for this project. AUC-ROC is a suitable metric when dealing with imbalanced datasets, as it considers both the true positive rate and the false positive rate, providing a robust measure of model performance across all possible classification thresholds. This characteristic makes it an appropriate choice for genre classification, where the distribution of songs across genres may be imbalanced.
+          </p>
+
+          <h5 style="font-weight: bold;">Model Building Process</h5>
+          <h5>Data Preprocessing</h5>
+
+          <p> 
+            The first step in the model-building process was to preprocess the data. This involved handling missing values and scaling the features. Missing values in the dataset were handled by dropping the rows with NaNs since they constituted only a small fraction of the data. In addition, columns with '?' were identified and converted to NaNs. These values were imputed with the median value of the respective column per genre.
+            Feature scaling was performed using the StandardScaler. This ensured that all features had a mean of 0 and a standard deviation of 1, thereby standardizing the range of the independent features in the data.
+            Certain features such as 'instance_id', 'artist_name', 'track_name', and 'obtained_date' were dropped from the dataset because they were not significant for genre classification. Other features like 'key' and 'mode' were transformed into numerical values, which enhanced the model's classification performance.            
+          </p>
+
+          <h5>Dimensionality Reduction</h5>
+
+          <p> 
+            Dimensionality reduction strategies such as PCA and t-SNE 
+            were explored. However, none of these strategies improved the 
+            AUC-ROC score, indicating that these methods were not beneficial 
+            for this particular dataset.
+          </p>
+
+          <p> *Missing picture* </p>
+          <h5>Model Selection and Cross-Validation</h5>
+          <p> The model testing process was a crucial part of the project.
+             It began by experimenting with a variety of machine learning 
+             models on data preprocessed with t-SNE for dimensionality reduction. 
+             The models tested include Logistic Regression, Random Forest, Support Vector 
+             Machines, K-Nearest Neighbors, and XGBoost. </p>
+
+          <p> Logistic Regression, a simple and widely-used classification algorithm,
+             was chosen due to its efficiency and ease of interpretation. However, it 
+             performed poorly, achieving only 0.305566 accuracy and an AUC-ROC score of 0.790516. 
+             This might be because logistic regression may not handle complex relationships in data well, 
+             particularly when there are interactions between features.
+          </p>
+
+          <p>Random Forest, an ensemble method that constructs multiple decision trees, was chosen due 
+            to its ability to handle complex datasets and provide feature importance. 
+            It performed better than Logistic Regression with an accuracy of 0.456469 and an AUC-ROC score of 0.863476.
+             However, it still fell short of expectations, possibly due to the high dimensionality of the data.
+         </p>
+
+         <p>Support Vector Machines (SVM), known for their effectiveness in high-dimensional spaces and their adaptability 
+          through the use of different kernel functions, were also tested. Yet, SVMs achieved an accuracy of 0.433749 and an 
+          AUC-ROC score of 0.851400, which was less than ideal. SVMs can be computationally intensive, and they might not perform 
+          well when there's a lot of noise in the data, as it may lead to overfitting. K-Nearest Neighbors, a simple algorithm that
+          classifies a data point based on the majority class of its 'k' nearest neighbors, achieved an accuracy of 0.475609 and an AUC-ROC score of 0.827669.
+          However, K-Nearest Neighbors can suffer from the curse of dimensionality, where the distance between neighbors becomes less meaningful in high-dimensional spaces.
+       </p>
+
+       <p>
+        XGBoost, a powerful gradient boosting algorithm, performed better than the previous models with an accuracy of 0.471309 and an AUC-ROC score of 0.873206.
+        The effectiveness of XGBoost can be attributed to its ability to capture complex relationships in the data and its robustness against overfitting through the use of gradient boosting.
+     </p>
+     <p>
+      Despite the promising results from XGBoost, further experimentation was conducted using dimensionality reduction techniques such as PCA, t-SNE, PCA+t-SNE, and LDA.
+      However, none of these strategies improved the AUC-ROC score, suggesting that these methods were not beneficial for this particular dataset. Three different neural 
+      network architectures were also experimented with. These architectures were designed with varying numbers of layers and neurons, and additional techniques like dropout 
+      and batch normalization were used to prevent overfitting and accelerate training. Despite these efforts, none of these architectures achieved satisfactory accuracy, 
+      suggesting that the complexity and high dimensionality of the data might be better suited to tree-based models like XGBoost.
+    </p>
+    <h5>Testing Neural Networks</h5>
+    <!-- i should add some picturs sof the 
+      model archtecture and how they perform 
+      also talk about continous work -->
+    <p>
+      Model 1 consisted of a simple feed-forward neural network with two hidden layers. 
+      The first layer had 64 neurons, and the second had 128 neurons. However, 
+      despite its simplicity, it failed to provide satisfactory accuracy.
+    </p>
+    <p>
+      Model 2 was a slightly larger network with more neurons in each layer (128 in the first layer and 256 in the second layer),
+      but it also did not yield satisfactory results. This could be because while increasing the number of neurons can improve the 
+      model's capacity to learn complex patterns, it can also make it more prone to overfitting, especially if there's not enough data to adequately train the model.
+    </p>
+    <p>
+      Model 3 introduced more complexity by adding a dropout layer and a batch normalization layer. 
+      Dropout is a regularization technique that randomly drops out (i.e., sets to zero) several output features of the layer during training, 
+      which can help prevent overfitting. Batch normalization is a technique to provide any layer in a neural network with inputs that are zero 
+      mean/unit variance, which can help speed up learning. The model consisted of two layers with 128 neurons each, a dropout rate of 0.5, and batch 
+      normalization after the first layer. Despite these additions, Model 3 also failed to achieve satisfactory accuracy.
+    </p>
+    <p>
+      The XGBoost model, when employed with a One-vs-Rest strategy for the multi-class problem, yielded the best AUC-ROC score. 
+      Nonetheless, none of the models reached satisfactory accuracy, indicating the potential need for further model tuning or 
+      alternative pre-processing steps. Stratified K-Fold cross-validation was integrated into the process to ensure an unbiased 
+      representation of each genre during model training. Despite these rigorous attempts, the use of neural network models did not 
+      yield successful outcomes. The likely reasons could be the complexity and high dimensionality of the data, which might be more 
+      compatible with tree-based models like XGBoost. Additionally, it's plausible that the neural network architectures were not 
+      optimal for this specific problem, or that they were not trained sufficiently to converge to a robust solution.
+    </p>
+    <h5 style="font-weight: bold;">Results and Discussion</h5>
+    <p>
+      The XGBoost model achieved the best AUC-ROC score of 0.94, indicating a high performance in genre classification. 
+      The model used the original set of predictors without dimensionality reduction. This suggests that the initial 
+      feature space contained important information that was key to successful genre classification and that dimensionality 
+      reduction methods like PCA and t-SNE were unable to retain this information. Among the various challenges encountered 
+      during the project, handling missing data was a major one. Rows with NaN values were dropped, and special characters 
+      such as "?" were identified and converted to NaNs,then imputed with the median value of the respective column per genre. 
+      This approach proved effective in dealing with the issue.
+    </p>
+    <p>
+      The feature selection process also proved to be crucial for the success of the classification task. 
+      Certain features such as 'instance_id', 'artist_name', 'track_name', and 'obtained_date' were dropped 
+      from the dataset as they were not significant for genre classification. On the other hand, features like 
+      'key' and 'mode' were transformed into numerical values, contributing to the improved performance of the model.
+    </p>
+    <p>
+      The most important features for the XGBoost classification were 'popularity', 'danceability', 'speechiness', and 'instrumentalness'. 
+      This indicates that these features have a significant impact on the genre of a song, and thus can be the focus of future research or 
+      application in similar tasks.
+    </p>
+    <p>
+      In conclusion, to achieve a successful classification taking into account the AUC metric, it was fundamental 
+      to have explored different architectures and models. This project underlines the importance of detailed 
+      exploratory data analysis, rigorous preprocessing, and thoughtful model selection.
+    </p>
+    <p>
+      The final XGBoost model that was chosen uses the dataset scaled but not dimensionally reduced. 
+      This allowed the model to make use of the full feature space and achieve an AUC score of 0.94, 
+      the highest score in all the experiments. The hyperparameters were mostly set to default, with 
+      some tuning to optimize performance. This achievement illustrates the potential of XGBoost for multi-class
+      classification problems and encourages further exploration and application of this algorithm.
+    </p>
+    <!-- i need to make them stay on a row side by side -->
+    <div class="col-md-4">
+      <img src="model with tsne.png" alt="Profile picture" class=" img-thumbnail">
+      <img src="best sofar.png" alt="Profile picture" class=" img-thumbnail">
+
+    </div>
+
+        <!-- <pre><code class="language-javascript">const exampleFunction = () => { console.log("Hello, world!"); };</code></pre>
+
+        <h5>Features</h5>
+        <ul>
+          <li>Feature 1</li>
+          <li>Feature 2</li>
+          <li>Feature 3</li>
+        </ul>
+        <pre>
+            <code class="language-javascript">
+            const exampleFunction = () => {
+              console.log("Hello, world!");
+            };
+            </code>
+            </pre>
+            
+        <h5>Technologies Used</h5>
+        <p>Technology 1, Technology 2, Technology 3</p>
+    
+        <h5>Demo and Source Code</h5>
+        <p><a href="demo-link">View Demo</a> | <a href="github-link">View Source Code on GitHub</a></p> -->
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <!-- Add your existing footer code here -->
+  <footer>
+    <p>&copy; Mateus Silva Aragao. All rights reserved.</p>
+    <div class="social-icons">
+      <a href="https://www.linkedin.com/in/mateus-silva-aragao-986933162/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <a href="mateusilvaragao@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a>
+      <a href="https://github.com/aragaomateus" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://medium.com/@aragaosm" target="_blank" title="Medium"><i class="fab fa-medium"></i></a>
+    </div>
+  </footer>
+</body>
+</html>
