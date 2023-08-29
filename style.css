@@ -42,6 +42,15 @@ text-decoration: none;
 margin: 0 1rem;
 }
 
+nav a.active {
+  color: rgb(241, 173, 173);
+}
+
+nav a, nav a.active {
+  border: none;
+  outline: none;
+}
+
 nav a:hover {
 transform: scale(1.10); 
 transition: transform .5s; 

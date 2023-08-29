@@ -8,7 +8,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/monokai.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
   <link rel="stylesheet" href="/style.css">
 <title>Music Genre Classification</title>
 
@@ -19,18 +22,22 @@
     <nav>
       <a href="/index.html">About</a>
       <a href="/resume.html">Resume</a>
-      <a href="/projects.html">Projects</a>
+      <a href="/projects.html" class="active">Projects</a>
       <!-- <a href="blog.html">Blog</a> -->
       <a href="/contact.html">Contact</a>
     </nav>
   </header>
   <!-- Add your existing navigation code here -->
-<h1>Music Genre Classification</h1>
+  <article class="project-detail">
+  <header class="text-center">
+    <h1>Music Genre Classification</h1>
+    <h4>The Fundamentals of Machine Learning Capstone Project </h4>
+
+  </header>
+
   <section class="container mt-4">
     <div class="project-page">
-      
-        <h4>The Fundamentals of Machine Learning Capstone Project </h4>
-        
+            
         <h5 style="font-weight: bold;">The Final Model </h5>
         <p> 
           The final model selected for this project was XGBoost. More specifically, 
@@ -132,6 +139,55 @@
       mean/unit variance, which can help speed up learning. The model consisted of two layers with 128 neurons each, a dropout rate of 0.5, and batch 
       normalization after the first layer. Despite these additions, Model 3 also failed to achieve satisfactory accuracy.
     </p>
+    <section class="code-snippets">
+      <pre>
+        <code class="python">
+        # Define the neural network model
+class Model1(nn.Module):
+    def __init__(self, input_size, num_classes):
+        super(Model1, self).__init__()
+        self.layer1 = nn.Linear(input_size, 64)
+        self.layer2 = nn.Linear(64, 128)
+        self.layer3 = nn.Linear(128, num_classes)
+        
+    def forward(self, x):
+        x = nn.functional.relu(self.layer1(x))
+        x = nn.functional.relu(self.layer2(x))
+        x = self.layer3(x)
+        return x
+
+class Model2(nn.Module):
+    def __init__(self, input_size, num_classes):
+        super(Model2, self).__init__()
+        self.layer1 = nn.Linear(input_size, 128)
+        self.layer2 = nn.Linear(128, 256)
+        self.layer3 = nn.Linear(256, num_classes)
+        
+    def forward(self, x):
+        x = nn.functional.relu(self.layer1(x))
+        x = nn.functional.relu(self.layer2(x))
+        x = self.layer3(x)
+        return x
+
+class Model3(nn.Module):
+    def __init__(self, input_size, num_classes):
+        super(Model3, self).__init__()
+        self.layer1 = nn.Linear(input_size, 128)
+        self.layer2 = nn.Linear(128, 128)
+        self.layer3 = nn.Linear(128, num_classes)
+        self.dropout = nn.Dropout(0.5)  # Dropout layer
+        self.batchnorm = nn.BatchNorm1d(128)  # BatchNorm layer
+    
+    def forward(self, x):
+        x = nn.functional.relu(self.layer1(x))
+        x = self.batchnorm(x)  # Apply BatchNorm
+        x = nn.functional.relu(self.layer2(x))
+        x = self.dropout(x)  # Apply Dropout
+        x = self.layer3(x)
+        return x
+      </code>
+    </pre>
+    </section>
     <p>
       The XGBoost model, when employed with a One-vs-Rest strategy for the multi-class problem, yielded the best AUC-ROC score. 
       Nonetheless, none of the models reached satisfactory accuracy, indicating the potential need for further model tuning or 
@@ -175,12 +231,22 @@
       classification problems and encourages further exploration and application of this algorithm.
     </p>
     <!-- i need to make them stay on a row side by side -->
-    <div class="col-md-4">
-      <img src="model with tsne.png" alt="Profile picture" class=" img-thumbnail">
-      <img src="best sofar.png" alt="Profile picture" class=" img-thumbnail">
+    <div class="row">
 
+      <div class="col-md-6">
+        <figure>
+            <img src="model with tsne.png" alt="Profile picture" class="img-thumbnail" width="400" height="300">
+            <figcaption class="text-center">Caption for first image</figcaption>
+        </figure>
+    </div>
+    <div class="col-md-6">
+        <figure>
+            <img src="best sofar.png" alt="Profile picture" class="img-thumbnail" width="400" height="300">
+            <figcaption class="text-center">Caption for second image</figcaption>
+        </figure>
     </div>
 
+  </div>
         <!-- <pre><code class="language-javascript">const exampleFunction = () => { console.log("Hello, world!"); };</code></pre>
 
         <h5>Features</h5>
@@ -204,6 +270,7 @@
         <p><a href="demo-link">View Demo</a> | <a href="github-link">View Source Code on GitHub</a></p> -->
     </div>
   </section>
+</article>
 
   <!-- Footer -->
   <!-- Add your existing footer code here -->
