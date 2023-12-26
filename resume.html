@@ -7,11 +7,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-  <link rel="stylesheet" href="style.css">  
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-  <title>Resume | Personal Website</title>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="skills.css">  
+
+  <link rel="stylesheet" href="style.css">  
+
+  <title>Mateus Resume</title>
 </head>
 <body>
   <header>
@@ -45,7 +48,7 @@
         <h2>Experience</h2>
         <div class="experience">
           <div class="experience-header">
-            <h4>Amazon<span class="tab"></span>May 2023 - Present</h4>
+            <h4>Amazon<span class="tab"></span>May 2023 - Aug 2023</h4>
           </div>
           <h5>Data Engineer Intern </h5>
             <p>
@@ -53,14 +56,14 @@
           </p>
            <ul class="experience-details">
             <li>
-              Delivered a data observability framework for spark applications running on AWS EMR.
-          </li>
-          <li>
-            Developed analytics dashboards with AWS Quicksight for runtime metrics of Spark applications.
-          </li>
-          <li>
-            Implemented AWS cloud infrastructure for data ingesting, processing and visualization using AWS CDK. 
-          </li>
+              Engineered an observability framework for Spark applications on AWS EMR, handling over 500 spark tasks and processing petabytes of data, optimizing performance and scalability.
+            </li>
+            <li>
+              Developed analytics dashboards in AWS Quicksight for real-time monitoring of Spark applications, improving visibility into performance metrics like shuffle and spill.
+            </li>
+            <li>
+              Implemented a cloud infrastructure with AWS CDK in TypeScript, integrating with production and beta pipelines, to support data workflows for applications critical to customer data views.
+            </li>
           </ul>
           <h6>
               Tools/Skills: Scala,Typescript, SQL, AWS( Glue, S3, Quicksight, Athena, Lambda and aws cdk),Software Engineering, Data Engineering, Data Analysis.
@@ -70,12 +73,19 @@
 
         <div class="experience">
           <div class="experience-header">
-            <h4>Moises.ai<span class="tab"></span>June 2022 – August 2022</h4>
+            <h4>Moises.ai<span class="tab"></span>June 2022 - August 2022</h4>
           </div>
           <h5>Product Data Analyst Intern </h5>
             <p>
               Worked on the Data Platform team as Product Data Analyst
-              Intern focusing on delivering analysis and building dashboard for company's new product.*
+              Intern focusing on delivering analysis and building dashboard for company's new product.
+              Orchestrated an A/B testing analysis for a novel AI-assisted songwriting editor at Moises.ai, 
+              using Python and statistical methods to evaluate model efficacy across 2,000 users over three months.
+              Developed and maintained an ETL pipeline using SQL in Google Big Query, facilitating streamlined data preparation 
+              for Tableau dashboards that monitored user engagement and demographics.
+              Synthesized and presented key product insights to stakeholders through Tableau visualizations, 
+              driving strategic decisions for the AI music startup's product development.
+              
           </p>
            <ul class="experience-details">
               <li>
@@ -105,21 +115,23 @@
 
         <div class="experience">
           <div class="experience-header">
-            <h4>New York Univeristy<span class="tab"></span>September 2021 – Present</h4>
+            <h4>New York Univeristy<span class="tab"></span>September 2021 - Dec 2023</h4>
           </div>
           <h5>Intro to Programming Tutor </h5>
           <ul class="experience-details">
               <li>
-                  Assist the students struggling with current assignments and questions related to past quizzes
-                  during drop-in office hours.
-              </li>
-              <li>
-                  Report to the instructor the students’ weaknesses and strengths for quick adjustments of the
-                  course materials.
-              </li>
-              <li>
-                  Mentor students during in class Python programming workshops.
+                Conducted over 150 tutoring sessions across 2-3 classes per semester at NYU, 
+                supporting around 800 students annually with programming concepts, assignments, 
+                and exam preparation.
 
+              </li>
+              <li>
+                Provided flexible tutoring services, including in-person and drop-in Zoom meetings for 10+ hours weekly,
+                 adapting to diverse learning needs and schedules.
+              </li>
+              <li>
+                Enhanced student engagement and understanding in Python programming through personalized 
+                instruction and collaboration with faculty to refine course content.
               </li>
           </ul>
 
@@ -149,40 +161,39 @@
         <!-- Add more experience entries -->
         
       </section>
-      <section class="resume-section">
-        <h2>Skills</h2>
-        <div class="row">
-          <!-- Add skills as badges -->
-          <!-- For this part I want to add a link to each one of the badges 
-          this links should take the user to useful parts of the website that 
-        reflect the use of that skill -->
-          <span class="badge badge-primary m-1">Python</span>
-          <span class="badge badge-primary m-1">Scala</span>
-          <span class="badge badge-primary m-1">C++</span>
-          <span class="badge badge-primary m-1">Typescript</span>
-          <span class="badge badge-primary m-1">SQL</span>
-          <span class="badge badge-primary m-1">Pytorch</span>
-          <span class="badge badge-primary m-1">Data Science</span>
-          <span class="badge badge-primary m-1">Data Visualization</span>
-          <span class="badge badge-primary m-1">Data Engineering</span>
-          <span class="badge badge-primary m-1">Distributed Systems</span>
-          <span class="badge badge-primary m-1">Data Analysis</span>
-          <span class="badge badge-primary m-1">Tableau</span>
-          <span class="badge badge-primary m-1">QuickSight</span>
-          <span class="badge badge-primary m-1">Google Big Query</span>
+       <section class="resume-section"> 
+        <div class="skills-container">
+          <div class="skills-grid">
+            <div class="skill">Python</div>
+            <div class="skill">Scala</div>
+            <div class="skill">C++</div>
+            <div class="skill">SQL</div>
+            <div class="skill">Pytorch</div>
+            <div class="skill">Data Science</div>
+            <div class="skill">Data Visualization</div>
+            <div class="skill">Data Engineering</div>
+            <div class="skill">Distributed Systems</div>
+            <div class="skill">Data Analysis</div>
+            <div class="skill">Tableau</div>
+            <div class="skill">AWS QuickSight</div>
+            <div class="skill">Google Big Query</div>
+            <div class="skill">R</div>
+            <div class="skill">Git</div>
+            <div class="skill">SciKitlearn</div>
+            <div class="skill">TensorFlow</div>
+            <div class="skill">Teaching</div>
+            <div class="skill">Leadership</div>
+            <div class="skill">Communication</div>
+            <div class="skill">Problem Solving</div>
+            <div class="skill">Conflict Resolution</div>
 
-          <span class="badge badge-primary m-1">R</span>
-          <span class="badge badge-primary m-1">Git</span>
-          <span class="badge badge-primary m-1">TensorFlow</span>
-          <span class="badge badge-primary m-1">SciKitlearn</span>
-          <span class="badge badge-primary m-1">Teaching</span>
-          <span class="badge badge-primary m-1">Leadership</span>
-          <span class="badge badge-primary m-1">Communication</span>
-          <span class="badge badge-primary m-1">Problem Solving</span>
-          <span class="badge badge-primary m-1">Conflict Resolution</span>
 
+            <!-- Repeat for other skills -->
+          </div>
         </div>
+        
       </section>
+        
     </div>
   
   

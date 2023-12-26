@@ -1,0 +1,48 @@
+/* Ensure the main container takes up all available space */
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Aligns content vertically center */
+    align-items: center; /* Aligns content horizontally center */
+    flex-grow: 1;
+  }
+  
+  .skills-container {
+    width: 100%; /* Full width of the container */
+    max-width: 960px; /* Maximum width of the content */
+    margin: 2rem auto; /* Centers in the available space with margin */
+  }
+  
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(115px, .5fr)); /* Creates a responsive grid */
+    gap: 1rem; /* Space between items */
+    /* justify-content: center; Center grid items horizontally */
+    align-items: center; /* Center grid items vertically */
+  }
+  
+  .skill {
+    background-color: #2274A5;
+    color: #ffffff;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: bold;
+    font-size: small;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s;
+    cursor: pointer;
+  }
+  
+  .skill:hover {
+    background-color: #185a83;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .skill {
+      padding: 0.4rem 0.8rem;
+      font-size: 0.75rem; /* Adjust font size for smaller screens */
+    }
+  }
+  
