@@ -1,94 +1,372 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/monokai.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
-    <script>hljs.highlightAll();</script>
-  <link rel="stylesheet" href="/style.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sound Compass Project | Mateus Aragão</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-black: #1a1a1a;
+            --accent-blue: #2c3e50;
+            --accent-warm: #7f8c8d;
+            --accent-green: #27ae60;
+            --light-gray: #f8f9fa;
+            --medium-gray: #6c757d;
+            --dark-gray: #495057;
+            --white: #ffffff;
+            --border-light: #e9ecef;
+            --grid-gap: 32px;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #fefefe;
+            color: var(--primary-black);
+            line-height: 1.6;
+            font-size: 16px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: var(--grid-gap);
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 var(--grid-gap);
+            flex: 1;
+        }
+        
+        /* Navigation */
+        nav {
+            grid-column: 1 / -1;
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--border-light);
+            margin-bottom: 3rem;
+        }
+        
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: var(--primary-black);
+            letter-spacing: -0.01em;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--medium-gray);
+            font-weight: 400;
+            transition: color 0.2s ease;
+            font-size: 0.95rem;
+        }
+        
+        .nav-links a.active,
+        .nav-links a:hover {
+            color: var(--primary-black);
+        }
+        
+        /* Article Header */
+        .article-header {
+            grid-column: 1 / -1;
+            text-align: center;
+            margin-bottom: 4rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+        
+        .article-header h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary-black);
+            letter-spacing: -0.03em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .badge {
+            background: var(--accent-green);
+            color: var(--white);
+            font-size: 0.7rem;
+            font-weight: 500;
+            padding: 0.3rem 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        /* Back Link */
+        .back-link {
+            grid-column: 1 / -1;
+            margin-bottom: 2rem;
+        }
+        
+        .back-link a {
+            color: var(--medium-gray);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .back-link a:hover {
+            color: var(--primary-black);
+        }
+        
+        /* Main Content */
+        .main-content {
+            grid-column: 1 / -1;
+            margin-bottom: 4rem;
+        }
+        
+        .section {
+            margin-bottom: 2rem;
+        }
+        
+        .section p {
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            color: var(--dark-gray);
+        }
+        
+        .section ol {
+            margin: 1.5rem 0;
+            padding-left: 2rem;
+        }
+        
+        .section ol li {
+            margin-bottom: 0.8rem;
+            line-height: 1.7;
+            color: var(--dark-gray);
+            font-weight: 500;
+        }
+        
+        /* Action Links */
+        .action-links {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .action-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+            border: 1px solid var(--border-light);
+        }
+        
+        .action-link.primary {
+            background: var(--primary-black);
+            color: var(--white);
+            border-color: var(--primary-black);
+        }
+        
+        .action-link.primary:hover {
+            background: var(--accent-blue);
+            border-color: var(--accent-blue);
+        }
+        
+        .action-link.secondary {
+            background: transparent;
+            color: var(--accent-blue);
+            border-color: var(--accent-blue);
+        }
+        
+        .action-link.secondary:hover {
+            background: var(--accent-blue);
+            color: var(--white);
+        }
+        
+        /* Call to Action Section */
+        .cta-section {
+            background: var(--light-gray);
+            border-left: 4px solid var(--accent-green);
+            padding: 2rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+        
+        .cta-section h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary-black);
+        }
+        
+        .cta-section p {
+            color: var(--medium-gray);
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--primary-black);
+            color: var(--white);
+            padding: 2rem 0;
+            text-align: center;
+            margin-top: auto;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .social-icons a {
+            color: var(--medium-gray);
+            font-size: 1.2rem;
+            transition: color 0.2s ease;
+        }
+        
+        .social-icons a:hover {
+            color: var(--white);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .grid-container {
+                padding: 0 20px;
+            }
+            
+            .nav-links {
+                gap: 1.5rem;
+            }
+            
+            .article-header h1 {
+                font-size: 1.8rem;
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .action-links {
+                flex-direction: column;
+            }
+            
+            .cta-section {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 </head>
 <body>
-  <!-- Navigation -->
-  <header>
-    <nav>
-      <!-- <a href="index.html">About</a> -->
-      <a href="index.html" class="active">Resume</a>
-      <a href="/projects.html" class="active">Projects</a>
-      <!-- <a href="blog.html">Blog</a> -->
-      <a href="/contact.html">Contact</a>
-    </nav>
-  </header>
-  <!-- Add your existing navigation code here -->
-  <article class="project-detail">
-    <header class="text-center">
+    <div class="grid-container">
+        <nav>
+            <div class="nav-content">
+                <div class="logo">Mateus Silva Aragão</div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Resume</a></li>
+                    <li><a href="projects.html" class="active">Projects</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
 
-    <h1>
-        Sound Compass Project <span class="badge badge-warning" style="font-size: 1rem; vertical-align: top; margin-left: 10px; background-color: yellowgreen;">In Progress</span>
-    </h1>
-    
-    </header>
-  
-    <section class="container mt-4">
-         <div class="mt-4">
-            <a href="https://github.com/aragaomateus/mirrored" target="_blank">
-              <i class="fab fa-github fa-2x"></i> Check out the code on GitHub
+        <div class="back-link">
+            <a href="projects.html">
+                <i class="fas fa-arrow-left"></i> Back to Projects
             </a>
-          </div>
-        <p></p> 
-      <div class="project-page">
-        <a href="https://mirrored.vercel.app">Access SoundCompass Page</a>
-        <p></p> 
+        </div>
 
-        <p>
-            A web application that allows user to explore their spotify profile in a whole different way.
-        </p>
-        <p>
-          The application has 3 primary functions:
-        </p>
-        <ol>          
-            <li><strong>Generate Opposite Playlists</strong></li>
-            <li><strong>Spotify Profile Similarity</strong></li>
-            <li><strong>Get Instant Playlist Generation</strong></li>
+        <header class="article-header">
+            <h1>
+                Sound Compass Project
+                <span class="badge">In Progress</span>
+            </h1>
+        </header>
 
-        </ol>
-        <!-- <p>
-          At its foundation, the software interfaces with Spotify's API, pulling user-specific playlists and subsequently extracting detailed audio attributes for every song. Metrics such as danceability, energy, and tempo are pivotal in determining the centroid—a representative point that denotes the average of all tracks. With this reference, the program identifies songs either close to the centroid (for the hyper playlist) or distant from it (for the opposite playlist).
-        </p>
-        <p>
-          Designed with an emphasis on user interaction, the Streamlit library renders the application accessible and visually appealing. All a user needs to do is input their Spotify username, and the program seamlessly presents the crafted playlists.
-        </p>
-        <p>
-          To optimize the experience and diminish repetitive API interactions, caching is employed. By temporarily preserving user data, the application can promptly curate playlists for recurrent users, omitting the need to repeatedly fetch all their data, thus ensuring a rapid and streamlined process.
-        </p>
-        <p>
-          At its core, the Hyper & Opposite Playlist Generator serves as a bridge, guiding Spotify aficionados deeper into their musical inclinations and unlocking fresh, uncharted sonic territories.
-        </p> -->
+        <main class="main-content">
+            <div class="action-links">
+                <a href="https://github.com/aragaomateus/mirrored" target="_blank" class="action-link primary">
+                    <i class="fab fa-github"></i> View Source Code
+                </a>
+                <a href="https://mirrored.vercel.app" target="_blank" class="action-link secondary">
+                    <i class="fas fa-external-link-alt"></i> Live Application
+                </a>
+            </div>
 
-       
-      </div>
-    </section>
-  </article>
-  
-  
+            <section class="section">
+                <p>
+                    A web application that allows users to explore their Spotify profile in a whole different way. Sound Compass takes the foundation of my previous Spotify API work and transforms it into an interactive web experience built with Next.js.
+                </p>
+                
+                <p>The application has 3 primary functions:</p>
+                
+                <ol>
+                    <li><strong>Generate Opposite Playlists</strong></li>
+                    <li><strong>Spotify Profile Similarity</strong></li>
+                    <li><strong>Get Instant Playlist Generation</strong></li>
+                </ol>
 
-  <!-- Footer -->
-  <!-- Add your existing footer code here -->
-  <footer>
-    <p>&copy; Mateus Silva Aragao. All rights reserved.</p>
-    <div class="social-icons">
-      <a href="https://www.linkedin.com/in/mateus-silva-aragao-986933162/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-      <a href="mateusilvaragao@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a>
-      <a href="https://github.com/aragaomateus" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-      <a href="https://medium.com/@aragaosm" target="_blank" title="Medium"><i class="fab fa-medium"></i></a>
+                <p>
+                    This project represents the evolution of my Spotify recommendation algorithm into a full-featured web application. By leveraging Next.js for the frontend and integrating with Spotify's API, users can now interact with their music data through an intuitive interface that reveals hidden patterns in their listening habits.
+                </p>
+
+                <p>
+                    The application maintains the core algorithmic approach of analyzing audio features to create meaningful playlist recommendations, while adding new functionality for profile comparison and instant playlist creation. Built with modern web technologies, it provides a seamless user experience for music discovery and analysis.
+                </p>
+            </section>
+
+            <div class="cta-section">
+                <h3>Try Sound Compass</h3>
+                <p>Experience a new way to explore your Spotify listening habits and discover music tailored to your taste.</p>
+                <a href="https://mirrored.vercel.app" target="_blank" class="action-link primary">
+                    <i class="fas fa-play"></i> Launch Application
+                </a>
+            </div>
+        </main>
     </div>
-  </footer>
+
+    <footer>
+        <p>&copy; 2024 Mateus Silva Aragão. All rights reserved.</p>
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/in/mateus-silva-aragao-986933162/" target="_blank" title="LinkedIn">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="mailto:mateusilvaragao@gmail.com" title="Email">
+                <i class="fas fa-envelope"></i>
+            </a>
+            <a href="https://github.com/aragaomateus" target="_blank" title="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://medium.com/@aragaosm" target="_blank" title="Medium">
+                <i class="fab fa-medium"></i>
+            </a>
+        </div>
+    </footer>
 </body>
 </html>

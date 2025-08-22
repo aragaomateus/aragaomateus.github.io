@@ -1,199 +1,439 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-  <link rel="stylesheet" href="style.css">
-
-  <title>Projects | Personal Website</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Mateus Aragão</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-black: #1a1a1a;
+            --accent-blue: #2c3e50;
+            --accent-warm: #7f8c8d;
+            --light-gray: #f8f9fa;
+            --medium-gray: #6c757d;
+            --dark-gray: #495057;
+            --white: #ffffff;
+            --border-light: #e9ecef;
+            --grid-gap: 32px;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #fefefe;
+            color: var(--primary-black);
+            line-height: 1.6;
+            font-size: 16px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: var(--grid-gap);
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--grid-gap);
+            flex: 1;
+        }
+        
+        /* Navigation */
+        nav {
+            grid-column: 1 / -1;
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--border-light);
+            margin-bottom: 3rem;
+        }
+        
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: var(--primary-black);
+            letter-spacing: -0.01em;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--medium-gray);
+            font-weight: 400;
+            transition: color 0.2s ease;
+            font-size: 0.95rem;
+        }
+        
+        .nav-links a.active,
+        .nav-links a:hover {
+            color: var(--primary-black);
+        }
+        
+        /* Hero Section */
+        .hero {
+            grid-column: 1 / -1;
+            text-align: center;
+            margin-bottom: 4rem;
+            padding: 3rem 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary-black);
+            letter-spacing: -0.03em;
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--medium-gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Projects Grid */
+        .projects-grid {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .project {
+            display: flex;
+            flex-direction: column;
+            transition: all 0.2s ease;
+            border-bottom: 1px solid var(--border-light);
+            padding-bottom: 2rem;
+        }
+        
+        .project:hover {
+            transform: translateY(-2px);
+        }
+        
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: var(--light-gray);
+            margin-bottom: 1.5rem;
+        }
+        
+        .project-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .project h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+        
+        .project h3 a {
+            color: var(--primary-black);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        
+        .project h3 a:hover {
+            color: var(--accent-blue);
+        }
+        
+        .project-date {
+            color: var(--medium-gray);
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .project-description {
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            color: var(--dark-gray);
+            flex: 1;
+        }
+        
+        .project-skills {
+            font-size: 0.85rem;
+            color: var(--medium-gray);
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid #f1f3f4;
+        }
+        
+        .project-link {
+            align-self: flex-start;
+            background: var(--primary-black);
+            color: var(--white);
+            padding: 0.6rem 1.2rem;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.85rem;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            letter-spacing: 0.02em;
+        }
+        
+        .project-link:hover {
+            background: var(--accent-blue);
+        }
+        
+        /* Featured project (first one) */
+        .project:first-child {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 2rem;
+            align-items: start;
+            padding: 2rem 0;
+            border-top: 2px solid var(--accent-blue);
+            border-bottom: 2px solid var(--accent-blue);
+            margin-bottom: 1rem;
+        }
+        
+        .project:first-child .project-image {
+            margin-bottom: 0;
+            height: 250px;
+        }
+        
+        .project:first-child .project-content {
+            padding-top: 0;
+        }
+        
+        .project:first-child h3 {
+            font-size: 1.5rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--primary-black);
+            color: var(--white);
+            padding: 2rem 0;
+            text-align: center;
+            margin-top: auto;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .social-icons a {
+            color: var(--medium-gray);
+            font-size: 1.2rem;
+            transition: color 0.2s ease;
+        }
+        
+        .social-icons a:hover {
+            color: var(--white);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .grid-container {
+                padding: 0 20px;
+            }
+            
+            .nav-links {
+                gap: 1.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero {
+                padding: 2rem 0;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .project:first-child {
+                grid-column: 1;
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .project:first-child .project-image {
+                height: 200px;
+                margin-bottom: 1.5rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 </head>
 <body>
-  <header>
-    <nav>
-      <!-- <a href="index.html">About</a> -->
-      <a href="index.html" class="active">Resume</a>
-      <a href="projects.html" class="active">Projects</a>
-      <!-- No blog posts yet, so i will commment the line bellow -->
-      <!-- <a href="blog.html">Blog</a> -->
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
-  
-  <main>
-    
-    <section id="projects">
-      <div class="container">
-        <!-- Add more projects after the end of the semester -->
-        <!-- the capstone project for music genre classification  -->
-        <section class="project row">
-          <div class="col-md-4">
-            <img src="images/soundCompass.png"alt="Project image" class="project-image img-thumbnail">
-          </div>
-          <div class="col-md-8 project-text">
-            <!-- the line above should be un commented once I finish wrtting the 
-            content for the project -->
-            <h3><a href="/projects/sound_compass.html" style = 'color: white'>Sound Compass Project</a></h3>
-            <!-- <h3>Classification of Music Genres: A capstone project</h3> -->
-            <p class="project-date">Jan 1st, 2024</p> 
+    <div class="grid-container">
+        <nav>
+            <div class="nav-content">
+                <div class="logo">Mateus Silva Aragão</div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Resume</a></li>
+                    <li><a href="projects.html" class="active">Projects</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
 
-            <p>
-             A web app implementing my previous project "Finding New Spotify Recommendations Using Spotify API".
-             In Next.js, allowing users to test its functionalities on the web. 
-          </p>
-          
-          <p>
-              Skill: Java Script, Spotify API, Next.js, Vercel, AWS S3. 
-          </p>
-            <a href="https://github.com/aragaomateus/mirrored" class="btn btn-primary">View on GitHub</a>
-          </div>
+        <section class="hero">
+            <h1>Projects</h1>
+            <p>A curated collection of projects related to my interest outside of my 9-5 work.</p>
         </section>
 
-        <section class="project row">
-          <div class="col-md-4">
-            <img src="images/spotify.jpeg"alt="Project image" class="project-image img-thumbnail">
-          </div>
-          <div class="col-md-8 project-text">
-            <!-- the line above should be un commented once I finish wrtting the 
-            content for the project -->
-            <h3><a href="/projects/new_recommendations.html" style = 'color: aliceblue;'>Finding New Spotify Recommendations Using Spotify API</a></h3>
-            <!-- <h3>Classification of Music Genres: A capstone project</h3> -->
-            <p class="project-date">October 14, 2023</p> 
+        <main class="projects-grid">
+            <article class="project">
+                <img src="images/soundCompass.png" alt="Sound Compass Project" class="project-image">
+                <div class="project-content">
+                    <h3><a href="/projects/sound_compass.html">Sound Compass Project</a></h3>
+                    <div class="project-date">Jan 1st, 2024</div>
+                    <div class="project-description">
+                        A web app implementing my previous project "Finding New Spotify Recommendations Using Spotify API" in Next.js, allowing users to test its functionalities on the web.
+                    </div>
+                    <div class="project-skills">
+                        JavaScript, Spotify API, Next.js, Vercel, AWS S3
+                    </div>
+                    <a href="https://github.com/aragaomateus/mirrored" class="project-link" target="_blank">
+                        <i class="fab fa-github"></i> View on GitHub
+                    </a>
+                </div>
+            </article>
 
-            <p>
-              The Spotify Hyper & Opposite Playlist Generator enhances digital music experiences by offering two distinct playlist types: "Hyper-Focused" playlists, tailored to users' existing tastes, and "Opposite Playlists," introducing new genres and tracks. By analyzing Spotify's user data and song metrics, it crafts personalized playlists. With its user-friendly design and efficient caching system, it provides Spotify users a seamless journey into familiar and new musical terrains.
-             
-          </p>
-          
-          <p>
-              Skill: Python, Spotify API, Pandas, Numpy, requests. 
-          </p>
-            <a href="https://github.com/aragaomateus/NewSpotifyRecommendations" class="btn btn-primary">View on GitHub</a>
-          </div>
-        </section>
+            <article class="project">
+                <img src="images/spotify.jpeg" alt="Spotify Recommendations Project" class="project-image">
+                <div class="project-content">
+                    <h3><a href="/projects/new_recommendations.html">Finding New Spotify Recommendations Using Spotify API</a></h3>
+                    <div class="project-date">October 14, 2023</div>
+                    <div class="project-description">
+                        The Spotify Hyper & Opposite Playlist Generator enhances digital music experiences by offering two distinct playlist types: "Hyper-Focused" playlists, tailored to users' existing tastes, and "Opposite Playlists," introducing new genres and tracks.
+                    </div>
+                    <div class="project-skills">
+                        Python, Spotify API, Pandas, Numpy, requests
+                    </div>
+                    <a href="https://github.com/aragaomateus/NewSpotifyRecommendations" class="project-link" target="_blank">
+                        <i class="fab fa-github"></i> View on GitHub
+                    </a>
+                </div>
+            </article>
 
-        <!-- the capstone project for music genre classification  -->
-        <section class="project row">
-          <div class="col-md-4">
-            <img src="images/music.jpeg"alt="Project image" class="project-image img-thumbnail">
-          </div>
-          <div class="col-md-8 project-text">
-            <!-- the line above should be un commented once I finish wrtting the 
-            content for the project -->
-            <h3><a href="/projects/music_classification.html" style = 'color: aliceblue;' >Classification of Music Genres: A capstone project</a></h3>
-            <!-- <h3>Classification of Music Genres: A capstone project</h3> -->
-            <p class="project-date">May 10, 2023</p> 
+            <article class="project">
+                <img src="images/music.jpeg" alt="Music Classification Project" class="project-image">
+                <div class="project-content">
+                    <h3><a href="/projects/music_classification.html">Classification of Music Genres: A Capstone Project</a></h3>
+                    <div class="project-date">May 10, 2023</div>
+                    <div class="project-description">
+                        A multi-class classification problem of music genre prediction based on audio features. Tested various machine learning models including logistic regression, random forest, support vector machines, k-nearest neighbors, and XGBoost.
+                    </div>
+                    <div class="project-skills">
+                        Python, Sklearn, PyTorch, Data Science
+                    </div>
+                    <a href="https://github.com/aragaomateus/fundamentalsOfML/tree/master/capstone%20Project" class="project-link" target="_blank">
+                        <i class="fab fa-github"></i> View on GitHub
+                    </a>
+                </div>
+            </article>
 
-            <p>
-              In this project, we tackled a multi-class classification problem of music genre prediction based
-               on audio features. A range of machine learning models were tested, including logistic regression, 
-               random forest, support vector machines, k-nearest neighbors, and XGBoost, on a dataset that was 
-               processed with various dimensionality reduction techniques. XGBoost yielded the highest AUC-ROC 
-               score but did not reach satisfactory accuracy. This led us to further refine our XGBoost model 
-               with hyperparameters and incorporate it with a One-vs-Rest strategy and Stratified K-Fold cross-validation.
-              Despite our best efforts, we encountered limitations in achieving satisfactory accuracy. In the future, 
-              alternative preprocessing steps, model tuning, or different modeling techniques may need to be explored 
-              to improve performance.
-          </p>
-          
-          <p>
-              Skill: Python, Sklearn, Pytorch, Data Science.
-          </p>
-            <a href="https://github.com/aragaomateus/fundamentalsOfML/tree/master/capstone%20Project" class="btn btn-primary">View on GitHub</a>
-          </div>
-        </section>
+            <article class="project">
+                <img src="images/matching.jpeg" alt="MatchingNeeds Project" class="project-image">
+                <div class="project-content">
+                    <h3>MatchingNeeds Project</h3>
+                    <div class="project-date">April 20, 2023</div>
+                    <div class="project-description">
+                        A Streamlit app designed to connect college students, helping each other with classes they've previously taken and are currently enrolled in. Students input their current and past classes, and the app matches them with peers.
+                    </div>
+                    <div class="project-skills">
+                        Software Development, Python, SQL, Streamlit, Database Management
+                    </div>
+                    <a href="https://github.com/aragaomateus/MatchingNeeds-Project" class="project-link" target="_blank">
+                        <i class="fab fa-github"></i> View on GitHub
+                    </a>
+                </div>
+            </article>
 
+            <article class="project">
+                <img src="images/spectogram.png" alt="Audio Generation Project" class="project-image">
+                <div class="project-content">
+                    <h3>Generating Sound Samples</h3>
+                    <div class="project-date">Dec 12, 2022</div>
+                    <div class="project-description">
+                        A project for the deep learning class at NYU, developed together with Leo Dupire. Currently adapting Conditional GANs, used for image generation to generate spectrogram representations of audio samples.
+                    </div>
+                    <div class="project-skills">
+                        Deep Learning, Machine Learning, Audio Signal Processing, TensorFlow, PyTorch
+                    </div>
+                    <a href="https://github.com/leodup/HummingFace" class="project-link" target="_blank">
+                        <i class="fab fa-github"></i> View on GitHub
+                    </a>
+                </div>
+            </article>
 
-<!-- the stream lit app project for matching -->
-        <section class="project row">
-          <div class="col-md-4">
-            <img src="images/matching.jpeg"alt="Project image" class="project-image img-thumbnail">
-          </div>
-          <div class="col-md-8 project-text">
-            <!-- the line above should be un commented once I finish wrtting the 
-            content for the project -->
-            <!-- <h3><a href="project.html">MatchingNeeds Project</a></h3> -->
-            <h3>MatchingNeeds Project</h3>
-            <p class="project-date">April 20, 2023</p> 
-
-
-            <p>
-              A Streamlit app designed to connect college students, helping each other with classes
-              they've previously taken and are currently enrolled in. Students input their current and
-              past classes, and the app matches them with peers in opposite situations, fostering
-              collaboration
-              and support.
-          </p>
-          <p>
-              Skill: Software Development, Python, SQL, Streamlit ,Database Management.
-          </p>
-            <a href="https://github.com/aragaomateus/MatchingNeeds-Project" class="btn btn-primary">View on GitHub</a>
-          </div>
-        </section>
-        <!-- Add more projects as needed -->
-        <section class="project row">
-          <div class="col-md-4">
-            <img src="images/spectogram.png" alt="Project image" class="project-image img-thumbnail">
-          </div>
-          <div class="col-md-8 project-text">
-            <h3>Generating Sounds Samples</h3>
-            <p class="project-date">Dec 12, 2022</p> 
-
-            <p>
-              A project for the deep learning class at NYU. Developed together with Leo Dupire.
-              Currently adapting Condional GANs, used for image generation to generate spectogram
-              representaions
-              of audio samples.
-          </p>
-          <p>
-              Tools/Skill: Deep Learning, Machine Learning, Audio Signal Processing, Tensorflow, Pytorch.
-          </p>
-            <a href="https://github.com/leodup/HummingFace" class="btn btn-primary">View on GitHub</a>
-          </div>
-        </section>
-
-        <section class="project row">
-          <div class="col-md-4">
-            <img src="images/app_map.png"  alt="Project image" class="project-image img-thumbnail">
-          </div>
-          <div class="col-md-8 project-text">
-            <h3>MentorMe - MERN Stack Web Application Group Project</h3>
-            <p class="project-date">May 5, 2022</p> 
-
-            <p>
-              Responsible for front-end, back-end and database development of the project.
-              Developed app maps, wireframes, and prototypes during project design phase.
-              Applying Agile methodologies such as Scrum through the duration of the group project.
-          </p>
-          <p>
-              Tools/Skills: Prototyping using Figma, Fullstack development using React.js,Express.js and
-              MongoDB, Git, Scrum.
-          </p>
-            <a href="https://github.com/software-assignments-spring2022/final-project-mentorme" class="btn btn-primary">View on GitHub</a>
-          </div>
-        </section>
-
-      </div>
-      
-      <!-- Add more projects as needed -->
-    </section>
-  </main>
-  
-  
-  
-  <footer>
-    <p>&copy; Mateus Silva Aragao. All rights reserved.</p>
-    <div class="social-icons">
-      <a href="https://www.linkedin.com/in/mateus-silva-aragao-986933162/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-      <a href="mateusilvaragao@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a>
-      <a href="https://github.com/aragaomateus" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-      <a href="https://medium.com/@aragaosm" target="_blank" title="Medium"><i class="fab fa-medium"></i></a>
+            <article class="project">
+                <img src="images/app_map.png" alt="MentorMe Project" class="project-image">
+                <div class="project-content">
+                    <h3>MentorMe - MERN Stack Web Application</h3>
+                    <div class="project-date">May 5, 2022</div>
+                    <div class="project-description">
+                        A group project where I was responsible for front-end, back-end and database development. Developed app maps, wireframes, and prototypes during project design phase. Applied Agile methodologies such as Scrum.
+                    </div>
+                    <div class="project-skills">
+                        Prototyping using Figma, Fullstack development using React.js, Express.js and MongoDB, Git, Scrum
+                    </div>
+                    <a href="https://github.com/software-assignments-spring2022/final-project-mentorme" class="project-link" target="_blank">
+                        <i class="fab fa-github"></i> View on GitHub
+                    </a>
+                </div>
+            </article>
+        </main>
     </div>
-  </footer>
+
+    <footer>
+        <p>&copy; 2024 Mateus Silva Aragão. All rights reserved.</p>
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/in/mateus-silva-aragao-986933162/" target="_blank" title="LinkedIn">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="mailto:mateusilvaragao@gmail.com" title="Email">
+                <i class="fas fa-envelope"></i>
+            </a>
+            <a href="https://github.com/aragaomateus" target="_blank" title="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://medium.com/@aragaosm" target="_blank" title="Medium">
+                <i class="fab fa-medium"></i>
+            </a>
+        </div>
+    </footer>
 </body>
 </html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="skills.css">
+
+  <link rel="stylesheet" href="style.css">
+
+  <title>Mateus Resume</title>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <!-- <a href="index.html">About</a> -->
+      <a href="index.html" class="active">Resume</a>
+      <a href="projects.html">Projects</a>
+      <!-- No blog posts yet, so i will commment the line bellow -->
+      <!-- <a href="blog.html">Blog</a> -->
+      <a href="contact.html">Contact</a>
+
+    </nav>
+  </header>
+
+  <div class="container">
+    <section class="resume-section">
+      <a href="Mateus_Resume.pdf" download>Download My Resume</a>
+
+      <h2 style="font-weight: bold;">Education</h2>
+      <!-- Your education details go here -->
+      <h3>New York University</h3>
+      <span class="education-date">Jan 2021 - Dec 2023</span>
+      <h6>Bachelor of Science in Computer Science and Data Science</h6>
+
+      <h3>CUNY Kingsborough Community College</h3>
+      <span class="education-date"> Aug 2018 - Dec 2020</span>
+      <h6>Business Administration</h6>
+    </section>
+    <section class="resume-section">
+
+      <h2 style="font-weight: bold;">Experience</h2>
+      <div class="experience">
+        <div class="experience-header">
+          <h4><b style="text-align: left;">Amazon Marketing Cloud(AMC)</b><span class="tab"></span>Oct 2024 - Present</h4>
+        </div style="line-height: 1.75;">
+        <h5 style="text-align: left;"><i>Data Engineer</i> </h5>
+        <p>
+           I am a member of the AMC Data Engineering team. A team responsible for all public dataview onboarding projects.
+        </p>
+        <ul style="text-align: left;">
+          
+        </ul>
+        <h6>
+          Tools/Skills: AWS(EMR, DynamoDB, S3, Lambda, Athena), Scala, Apache Spark, Kotlin, SQL.
+        </h6>
+      </div>
+      <div class="experience">
+        <div class="experience-header">
+          <h4><b style="text-align: left;">Liao Lab Group @ NYU Courant Institute</b><span class="tab"></span>Feb 2024 -
+            Oct 2024</h4>
+        </div style="line-height: 1.75;">
+        <h5 style="text-align: left;"><i>Junior Laboratory Associate</i> </h5>
+        <p>
+          Worked as Junior Laboratory Associate at Liao Group.
+          Helped Professor Susan Liao at her work related to biological computing afocused on RNA splicing.
+        </p>
+        <ul style="text-align: left;">
+          <li>Developed a web interface using JavaScript, Flask, HTML, and CSS for visualizing RNA splicing
+            predictions, enhancing data interaction and user experience.</li>
+          <li>Analyzed cell profiling data using CellProfiler and Python, creating comprehensive visual representations
+            with Pandas and Matplotlib to derive actionable insights.</li>
+          <li>Mentored three undergraduate students in biological computing research, providing technical guidance and
+            fostering skills relevant to their academic projects.</li>
+        </ul>
+        <h6>
+          Tools/Skills: JavaScript, Python, HTML, CSS, Data visualization, Data Analysis.
+        </h6>
+      </div>
+
+      <div class="experience">
+        <div class="experience-header">
+          <h4><b style="text-align: left;">Amazon</b><span class="date">May 2023 - Aug 2023</span></h4>
+        </div>
+        <h5 style="text-align: left;"><i>Data Engineer Intern </i></h5>
+        <p>
+          Interning as a Data Engineer at the Amazon Marketing Cloud (AMC) team for paid features.
+        </p>
+        <ul style="text-align: left;">
+          <li>Engineered an observability framework for Spark applications on AWS EMR, handling over 500 spark tasks and
+            processing petabytes of data, optimizing performance and scalability.</li>
+          <li>Developed analytics dashboards in AWS Quicksight for real-time monitoring of Spark applications, improving
+            visibility into performance metrics like shuffle and spill.</li>
+          <li>Implemented a cloud infrastructure with AWS CDK in TypeScript, integrating with production and beta
+            pipelines, to support data workflows for applications critical to customer data views.</li>
+        </ul>
+        <h6>Tools/Skills: Scala, TypeScript, SQL, AWS (Glue, S3, Quicksight, Athena, Lambda, and AWS CDK), Software
+          Engineering, Data Engineering, Data Analysis.</h6>
+      </div>
+
+      <!-- Add more experience entries -->
+
+      <div class="experience">
+        <div class="experience-header" style="line-height: 1.75;">
+          <h4>Moises.ai<span class="tab"></span>June 2022 - August 2022</h4>
+
+          <h5 class="experience-h5">Product Data Analyst Intern </h5>
+        </div>
+        <p>
+          Worked on the Data Platform team as Product Data Analyst
+          Intern focusing on delivering analysis and building dashboard for company's new product.
+          Orchestrated an A/B testing analysis for a novel AI-assisted songwriting editor at Moises.ai,
+          using Python and statistical methods to evaluate model efficacy across 2,000 users over three months.
+          Developed and maintained an ETL pipeline using SQL in Google Big Query, facilitating streamlined data
+          preparation
+          for Tableau dashboards that monitored user engagement and demographics.
+          Synthesized and presented key product insights to stakeholders through Tableau visualizations,
+          driving strategic decisions for the AI music startup's product development.
+
+        </p>
+        <ul style="text-align: left;">
+          <li>
+            Data Analysis: Delivered Product data analysis using Pandas, Numpy and Matplotlib Libraries.
+          </li>
+          <li>
+            Data Visualization: Built product dashboards for key stakeholders using tableau.
+          </li>
+          <li>
+            Data Science: Performed Hypothesis tests using One-Way Anova, Kruskall Wallis test and post-hoc
+            test on A/B test data.
+            - SQL C.R.U.D: Created and Maintained SQL queries using Google Big Query.
+          </li>
+          <li>
+            Reporting: Delivered monthly report about data analytics progress and newly found insights.
+          </li>
+          <li>
+            SQL C.R.U.D: Created and Maintained SQL queries using Google Big Query.
+          </li>
+        </ul>
+        <h6>
+          Tools/Skills: Data Science Python Libraries (Pandas, Numpy and Matplotlib), Google Big Query, SQL,
+          Tableau.
+        </h6>
+      </div>
+      <!-- Add more experience entries -->
+
+      <div class="experience">
+        <div class="experience-header">
+          <h4>New York Univeristy<span class="tab"></span>September 2021 - Dec 2023</h4>
+        </div>
+        <h5 class="experience-h5">Intro to Programming Tutor </h5>
+        <ul class="experience-details">
+          <li>
+            Conducted over 150 tutoring sessions across 2-3 classes per semester at NYU,
+            supporting around 800 students annually with programming concepts, assignments,
+            and exam preparation.
+
+          </li>
+          <li>
+            Provided flexible tutoring services, including in-person and drop-in Zoom meetings for 10+ hours weekly,
+            adapting to diverse learning needs and schedules.
+          </li>
+          <li>
+            Enhanced student engagement and understanding in Python programming through personalized
+            instruction and collaboration with faculty to refine course content.
+          </li>
+        </ul>
+
+        <h6>
+          Tools/Skills: Python programming, Teaching, Leadership, Communication.
+        </h6>
+        <h5 class="experience-h5">Resident Assistant</h5>
+        <ul class="experience-details">
+          <li>
+            Create, market, and lead student centered hall events to promote social,
+            education, diversity, health, emotional, understanding and growth
+          </li>
+          <li>
+            Promote the interaction and construction of social networks between community and residents
+          </li>
+          <li>
+            Implement and enforce all College and Campus Living policies, promoting academic excellence,
+            addressing student needs, and encouraging involvement
+          </li>
+        </ul>
+        <h6>
+          Tools/Skills: Problem Solving, Leadership, Communication, Conflict Resolution.
+        </h6>
+
+
+      </div>
+      <!-- Add more experience entries -->
+
+    </section>
+    <section class="resume-section">
+      <h2 style="font-weight: bold;">Skills</h2>
+      <div class="skills-container">
+        <div class="skills-grid">
+          <div class="skill">Python</div>
+          <div class="skill">Scala</div>
+          <div class="skill">C++</div>
+          <div class="skill">SQL</div>
+          <div class="skill">Pytorch</div>
+          <div class="skill">Data Science</div>
+          <div class="skill">Data Visualization</div>
+          <div class="skill">Data Engineering</div>
+          <div class="skill">Distributed Systems</div>
+          <div class="skill">Data Analysis</div>
+          <div class="skill">Tableau</div>
+          <div class="skill">AWS QuickSight</div>
+          <div class="skill">Google Big Query</div>
+          <div class="skill">R</div>
+          <div class="skill">Git</div>
+          <div class="skill">SciKitlearn</div>
+          <div class="skill">TensorFlow</div>
+          <div class="skill">Teaching</div>
+          <div class="skill">Leadership</div>
+          <div class="skill">Communication</div>
+          <div class="skill">Problem Solving</div>
+          <div class="skill">Conflict Resolution</div>
+
+
+          <!-- Repeat for other skills -->
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+
+  <footer>
+    <p>&copy; Mateus Silva Aragao. All rights reserved.</p>
+    <div class="social-icons">
+      <a href="https://www.linkedin.com/in/mateus-silva-aragao-986933162/" target="_blank" title="LinkedIn"><i
+          class="fab fa-linkedin"></i></a>
+      <a href="mateusilvaragao@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a>
+      <a href="https://github.com/aragaomateus" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://medium.com/@aragaosm" target="_blank" title="Medium"><i class="fab fa-medium"></i></a>
+    </div>
+  </footer>
+</body>
+
+</html>

@@ -1,77 +1,393 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact | Personal Website</title>
-    <!-- Add this line -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-  <link rel="stylesheet" href="style.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Mateus Aragão</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-black: #1a1a1a;
+            --accent-blue: #2c3e50;
+            --accent-warm: #7f8c8d;
+            --light-gray: #f8f9fa;
+            --medium-gray: #6c757d;
+            --dark-gray: #495057;
+            --white: #ffffff;
+            --border-light: #e9ecef;
+            --grid-gap: 32px;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #fefefe;
+            color: var(--primary-black);
+            line-height: 1.6;
+            font-size: 16px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: var(--grid-gap);
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--grid-gap);
+            flex: 1;
+        }
+        
+        /* Navigation */
+        nav {
+            grid-column: 1 / -1;
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--border-light);
+            margin-bottom: 3rem;
+        }
+        
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: var(--primary-black);
+            letter-spacing: -0.01em;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--medium-gray);
+            font-weight: 400;
+            transition: color 0.2s ease;
+            font-size: 0.95rem;
+        }
+        
+        .nav-links a.active,
+        .nav-links a:hover {
+            color: var(--primary-black);
+        }
+        
+        /* Main Content */
+        .main-content {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: var(--grid-gap);
+            margin-bottom: 4rem;
+        }
+        
+        /* Contact Hero */
+        .contact-hero {
+            grid-column: 1 / -1;
+            text-align: center;
+            margin-bottom: 4rem;
+            padding: 3rem 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+        
+        .contact-hero h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary-black);
+            letter-spacing: -0.03em;
+        }
+        
+        .contact-hero h2 {
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: var(--medium-gray);
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            grid-column: 1 / 8;
+            padding-right: 2rem;
+        }
+        
+        /* Contact Info */
+        .contact-info {
+            grid-column: 9 / -1;
+            padding-left: 2rem;
+            border-left: 1px solid var(--border-light);
+        }
+        
+        .info-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            color: var(--primary-black);
+        }
+        
+        .info-item {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #f1f3f4;
+        }
+        
+        .info-item:last-child {
+            border-bottom: none;
+        }
+        
+        .info-item h4 {
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--medium-gray);
+            margin-bottom: 0.5rem;
+        }
+        
+        .info-item a {
+            color: var(--primary-black);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .info-item a:hover {
+            color: var(--accent-blue);
+        }
+        
+        .info-item i {
+            color: var(--medium-gray);
+            width: 16px;
+        }
+        
+        /* Form Styling */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-group label {
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--primary-black);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .form-control {
+            padding: 1rem;
+            border: 1px solid var(--border-light);
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.2s ease;
+            background: var(--white);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+        }
+        
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background: var(--primary-black);
+            color: var(--white);
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            align-self: flex-start;
+        }
+        
+        .submit-btn:hover {
+            background: var(--accent-blue);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--primary-black);
+            color: var(--white);
+            padding: 2rem 0;
+            text-align: center;
+            margin-top: auto;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .social-icons a {
+            color: var(--medium-gray);
+            font-size: 1.2rem;
+            transition: color 0.2s ease;
+        }
+        
+        .social-icons a:hover {
+            color: var(--white);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .grid-container {
+                padding: 0 20px;
+            }
+            
+            .nav-links {
+                gap: 1.5rem;
+            }
+            
+            .contact-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .contact-hero {
+                padding: 2rem 0;
+            }
+            
+            .contact-section {
+                grid-column: 1 / -1;
+                margin-bottom: 3rem;
+                padding-right: 0;
+            }
+            
+            .contact-info {
+                grid-column: 1 / -1;
+                padding-left: 0;
+                border-left: none;
+                border-top: 1px solid var(--border-light);
+                padding-top: 2rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 </head>
 <body>
-  <header>
-    <nav>
-      <!-- <a href="index.html">About</a> -->
-      <a href="index.html" class="active">Resume</a>
-      <a href="projects.html">Projects</a>
-      <!-- No blog posts yet, so i will commment the line bellow -->
-      <!-- <a href="blog.html">Blog</a> -->      
-      <a href="contact.html" class="active">Contact</a>
-    </nav>
-  </header>
-  
-  <main>
-    <section id="contact">
- 
-    <div class="container">
-      <section>
-        <h2>Contact</h2>
-        <h3>Get in contact with me!</h3>
-        <form class="contact-form" method="POST" action="https://formspree.io/f/mgeqdkjq">
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" id="name"  name="_subject" class="form-control" />
-          </div>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email"  name="_replyto" class="form-control" />
-          </div>
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" class="form-control" name="message" rows="4"></textarea>
-          </div>
-          <button type="submit" class="btn">Submit</button>
-        </form>
-          <!-- Your form elements go here -->
-        <!-- <div class="social-icons">
-          <a href="https://www.linkedin.com/in/mateus-silva-aragao-986933162/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-          <a href="mateusilvaragao@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a>
-          <a href="https://github.com/aragaomateus" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-          <a href="https://medium.com/@aragaosm" target="_blank" title="Medium"><i class="fab fa-medium"></i></a>
-        </div> -->
-      </section>
-    </div>
-    
-  </section>
-  
-</main>
+    <div class="grid-container">
+        <nav>
+            <div class="nav-content">
+                <div class="logo">Mateus Silva Aragão</div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Resume</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
 
-  
-  
-  <footer>
-    <p>&copy; Mateus Silva Aragao. All rights reserved.</p>
-    <div class="social-icons">
-      <a href="https://www.linkedin.com/in/mateus-silva-aragao-986933162/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-      <a href="mateusilvaragao@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a>
-      <a href="https://github.com/aragaomateus" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-      <a href="https://medium.com/@aragaosm" target="_blank" title="Medium"><i class="fab fa-medium"></i></a>
+        <section class="contact-hero">
+            <h1>Contact</h1>
+            <h2>Get in contact with me!</h2>
+        </section>
+
+        <main class="main-content">
+            <section class="contact-section">
+                <form class="contact-form" method="POST" action="https://formspree.io/f/mgeqdkjq">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="_subject" class="form-control" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="_replyto" class="form-control" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" class="form-control" name="message" rows="6" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        Send Message
+                    </button>
+                </form>
+            </section>
+
+            <aside class="contact-info">
+                <h3 class="info-title">Let's Connect</h3>
+                
+                <div class="info-item">
+                    <h4>Email</h4>
+                    <a href="mailto:mateusilvaragao@gmail.com">
+                        <i class="fas fa-envelope"></i>
+                        mateusilvaragao@gmail.com
+                    </a>
+                </div>
+                
+                <div class="info-item">
+                    <h4>LinkedIn</h4>
+                    <a href="https://www.linkedin.com/in/mateus-silva-aragao-986933162/" target="_blank">
+                        <i class="fab fa-linkedin"></i>
+                        Connect on LinkedIn
+                    </a>
+                </div>
+                
+                <div class="info-item">
+                    <h4>GitHub</h4>
+                    <a href="https://github.com/aragaomateus" target="_blank">
+                        <i class="fab fa-github"></i>
+                        View my repositories
+                    </a>
+                </div>
+                
+                <div class="info-item">
+                    <h4>Medium</h4>
+                    <a href="https://medium.com/@aragaosm" target="_blank">
+                        <i class="fab fa-medium"></i>
+                        Read my articles
+                    </a>
+                </div>
+            </aside>
+        </main>
     </div>
-  </footer>
+
+    <footer>
+        <p>&copy; 2024 Mateus Silva Aragão. All rights reserved.</p>
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/in/mateus-silva-aragao-986933162/" target="_blank" title="LinkedIn">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="mailto:mateusilvaragao@gmail.com" title="Email">
+                <i class="fas fa-envelope"></i>
+            </a>
+            <a href="https://github.com/aragaomateus" target="_blank" title="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://medium.com/@aragaosm" target="_blank" title="Medium">
+                <i class="fab fa-medium"></i>
+            </a>
+        </div>
+    </footer>
 </body>
 </html>
