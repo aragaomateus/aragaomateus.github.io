@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mateus Aragão - Resume</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         :root {
             --primary-black: #1a1a1a;
             --accent-blue: #2c3e50;
@@ -23,8 +24,12 @@
             --white: #ffffff;
             --border-light: #e9ecef;
             --grid-gap: 32px;
+            --amazon-orange: #FF9900;
+            --nyu-purple: #57068C;
+            --moises-blue: #4A90E2;
+            --engine-green: #10B981;
         }
-        
+
         body {
             font-family: 'Inter', sans-serif;
             background: #fefefe;
@@ -35,7 +40,7 @@
             display: flex;
             flex-direction: column;
         }
-        
+
         .grid-container {
             display: grid;
             grid-template-columns: repeat(12, 1fr);
@@ -45,7 +50,7 @@
             padding: 0 var(--grid-gap);
             flex: 1;
         }
-        
+
         /* Navigation */
         nav {
             grid-column: 1 / -1;
@@ -53,26 +58,26 @@
             border-bottom: 1px solid var(--border-light);
             margin-bottom: 3rem;
         }
-        
+
         .nav-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        
+
         .logo {
             font-weight: 600;
             font-size: 1.2rem;
             color: var(--primary-black);
             letter-spacing: -0.01em;
         }
-        
+
         .nav-links {
             display: flex;
             gap: 3rem;
             list-style: none;
         }
-        
+
         .nav-links a {
             text-decoration: none;
             color: var(--medium-gray);
@@ -80,12 +85,12 @@
             transition: color 0.2s ease;
             font-size: 0.95rem;
         }
-        
+
         .nav-links a.active,
         .nav-links a:hover {
             color: var(--primary-black);
         }
-        
+
         /* Main Content */
         .main-content {
             grid-column: 1 / -1;
@@ -93,7 +98,7 @@
             grid-template-columns: repeat(12, 1fr);
             gap: var(--grid-gap);
         }
-        
+
         /* Download Section */
         .download-section {
             grid-column: 1 / -1;
@@ -101,7 +106,7 @@
             margin: 2rem 0;
             padding: 1.5rem 0;
         }
-        
+
         .download-link {
             display: inline-flex;
             align-items: center;
@@ -116,12 +121,12 @@
             letter-spacing: 0.02em;
             border: 1px solid var(--border-light);
         }
-        
+
         .download-link:hover {
             color: var(--primary-black);
             border-color: var(--medium-gray);
         }
-        
+
         /* Section Styling */
         .section {
             grid-column: 1 / -1;
@@ -129,11 +134,11 @@
             padding-bottom: 3rem;
             border-bottom: 1px solid var(--border-light);
         }
-        
+
         .section:last-child {
             border-bottom: none;
         }
-        
+
         .section h2 {
             font-size: 1.8rem;
             font-weight: 600;
@@ -141,26 +146,40 @@
             color: var(--primary-black);
             letter-spacing: -0.02em;
         }
-        
+
         /* Education */
         .education-item {
             margin-bottom: 2.5rem;
             padding-bottom: 2rem;
             border-bottom: 1px solid #f1f3f4;
         }
-        
+
         .education-item:last-child {
             border-bottom: none;
             margin-bottom: 0;
         }
-        
+
+        .education-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-logo {
+            width: 36px;
+            height: 36px;
+            object-fit: contain;
+            border-radius: 4px;
+        }
+
         .education-item h3 {
             font-size: 1.2rem;
             font-weight: 600;
             color: var(--primary-black);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0;
         }
-        
+
         .education-date {
             color: var(--medium-gray);
             font-size: 0.85rem;
@@ -169,13 +188,13 @@
             text-transform: uppercase;
             letter-spacing: 0.05em;
         }
-        
+
         .education-item h6 {
             font-size: 1rem;
             color: var(--dark-gray);
             font-weight: 400;
         }
-        
+
         /* Experience */
         .experience-item {
             margin-bottom: 3rem;
@@ -183,7 +202,7 @@
             border-left: 2px solid var(--light-gray);
             position: relative;
         }
-        
+
         .experience-item::before {
             content: '';
             position: absolute;
@@ -194,20 +213,38 @@
             background: var(--accent-blue);
             border-radius: 50%;
         }
-        
+
         .experience-header {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
             margin-bottom: 0.5rem;
         }
-        
+
+        .company-info {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .company-logo {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+            border-radius: 4px;
+        }
+
         .experience-header h4 {
             font-size: 1.1rem;
             font-weight: 600;
             color: var(--primary-black);
         }
-        
+
+        .company-amazon { color: var(--amazon-orange); }
+        .company-nyu { color: var(--nyu-purple); }
+        .company-moises { color: var(--moises-blue); }
+        .company-engine { color: var(--engine-green); }
+
         .experience-date {
             color: var(--medium-gray);
             font-size: 0.85rem;
@@ -215,31 +252,31 @@
             text-transform: uppercase;
             letter-spacing: 0.05em;
         }
-        
+
         .experience-title {
             font-size: 0.95rem;
             font-style: italic;
             color: var(--accent-blue);
             margin-bottom: 1rem;
         }
-        
+
         .experience-item p {
             margin-bottom: 1rem;
             line-height: 1.6;
             color: var(--dark-gray);
         }
-        
+
         .experience-item ul {
             margin-left: 1.5rem;
             margin-bottom: 1rem;
         }
-        
+
         .experience-item li {
             margin-bottom: 0.5rem;
             line-height: 1.6;
             color: var(--dark-gray);
         }
-        
+
         .skills-note {
             font-size: 0.85rem;
             color: var(--medium-gray);
@@ -248,7 +285,7 @@
             padding-top: 1rem;
             border-top: 1px solid #f1f3f4;
         }
-        
+
         /* Skills Grid */
         .skills-grid {
             display: grid;
@@ -256,7 +293,7 @@
             gap: 0.5rem;
             margin-top: 2rem;
         }
-        
+
         .skill {
             background: var(--light-gray);
             color: var(--dark-gray);
@@ -266,12 +303,12 @@
             font-size: 0.85rem;
             transition: all 0.2s ease;
         }
-        
+
         .skill:hover {
             background: var(--primary-black);
             color: var(--white);
         }
-        
+
         /* Footer */
         footer {
             background: var(--primary-black);
@@ -280,46 +317,62 @@
             text-align: center;
             margin-top: auto;
         }
-        
+
         .social-icons {
             display: flex;
             justify-content: center;
             gap: 1.5rem;
             margin-top: 1rem;
         }
-        
+
         .social-icons a {
             color: var(--medium-gray);
             font-size: 1.2rem;
             transition: color 0.2s ease;
         }
-        
+
         .social-icons a:hover {
             color: var(--white);
         }
-        
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .grid-container {
                 padding: 0 20px;
             }
-            
+
             .nav-links {
                 gap: 1.5rem;
             }
-            
+
             .experience-header {
                 flex-direction: column;
                 gap: 0.25rem;
             }
-            
+
+            .company-info {
+                gap: 0.5rem;
+            }
+
+            .company-logo {
+                width: 28px;
+                height: 28px;
+            }
+
+            .education-logo {
+                width: 32px;
+                height: 32px;
+            }
+
             .skills-grid {
                 grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
             }
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
 </head>
+
 <body>
     <div class="grid-container">
         <nav>
@@ -336,14 +389,29 @@
         <main class="main-content">
             <section class="section">
                 <h2>Experience</h2>
-                
+
                 <div class="experience-item">
                     <div class="experience-header">
-                        <h4>Amazon Marketing Cloud (AMC)</h4>
+                        <div class="company-info">
+                            <img src="images/Amazon-logo.jpg" alt="Amazon logo" class="company-logo">
+                            <h4><span class="company-amazon">Amazon Ads</span> </h4>
+                        </div>
                         <span class="experience-date">Oct 2024 - Present</span>
                     </div>
                     <div class="experience-title">Data Engineer</div>
-                    <p>Member of the AMC Data Engineering team, responsible for all public dataview onboarding projects.</p>
+                    <p>Working in the Data Engineering team responsible for data onboarding into the Amazon Marketing Cloud platform</p>
+                    <ul>
+                    <li>Spearheaded a solo data migration project that deprecated a legacy dataset,
+                        reducing daily processing from hundreds of billions to 20 billion records
+                        by eliminating duplication.</li>
+                    <li>Optimized a Scala/Spark ETL workflow, shrinking the AWS EMR cluster from
+                        300 to 50 nodes and slashing annual operational costs by $52K (74%),
+                        from ̃$70K to ̃$18K.</li>
+                    <li>Designed and deployed a high-throughput internal API using Kotlin,
+                        materializing 10 million daily records from an Apache Iceberg
+                        table into DynamoDB to serve data to internal services.</li>
+                    </ul>
+                   
                     <div class="skills-note">
                         AWS (EMR, DynamoDB, S3, Lambda, Athena), Scala, Apache Spark, Kotlin, SQL
                     </div>
@@ -351,50 +419,113 @@
 
                 <div class="experience-item">
                     <div class="experience-header">
-                        <h4>Liao Lab Group @ NYU Courant Institute</h4>
+                        <div class="company-info">
+                            <img src="images/nyu-logo.png" alt="NYU logo" class="company-logo">
+                            <h4>Liao Lab Group @ <span class="company-nyu">NYU</span> Courant Institute</h4>
+                        </div>
                         <span class="experience-date">Feb 2024 - Oct 2024</span>
                     </div>
                     <div class="experience-title">Junior Laboratory Associate</div>
-                    <p>Worked as Junior Laboratory Associate at Liao Group, helping Professor Susan Liao with biological computing research focused on RNA splicing.</p>
+                    <p>Worked as Junior Laboratory Associate at Liao Group, helping Professor Susan Liao with biological
+                        computing research focused on RNA splicing.</p>
                     <ul>
-                        <li>Developed a web interface using JavaScript, Flask, HTML, and CSS for visualizing RNA splicing predictions, enhancing data interaction and user experience.</li>
-                        <li>Analyzed cell profiling data using CellProfiler and Python, creating comprehensive visual representations with Pandas and Matplotlib.</li>
-                        <li>Mentored three undergraduate students in biological computing research, providing technical guidance.</li>
+                        <li>Developed a web interface using JavaScript, Flask, HTML/CSS for visualizing
+                            RNA splicing predictions, which was selected for presentation
+                            at the IEEE VisXai Workshop, improving research workflow for 5+ lab members.</li>
+                        <li>Built automated data analysis pipelines in Python using CellProfiler, Pandas, and Matplotlib
+                            to process
+                            and visualize cell profiling data from 200+ biological samples, generating actionable
+                            insights from large bio datasets.</li>
+                        <li>Mentored three undergraduate students in biological computing research, leading them
+                            presenting their
+                            work at an IEEE workshop, securing industry internships, and advancing to additional
+                            research opportunities.</li>
                     </ul>
                     <div class="skills-note">
                         JavaScript, Python, HTML, CSS, Data visualization, Data Analysis
                     </div>
                 </div>
-
                 <div class="experience-item">
                     <div class="experience-header">
-                        <h4>Amazon</h4>
-                        <span class="experience-date">May 2023 - Aug 2023</span>
+                        <div class="company-info">
+                            <img src="images/engine-logo.png" alt="Engine logo" class="company-logo">
+                            <h4><span class="company-engine">Freelance</span></h4>
+                        </div>
+                        <span class="experience-date">Jul 2024 - Oct 2024</span>
                     </div>
-                    <div class="experience-title">Data Engineer Intern</div>
-                    <p>Interning as a Data Engineer at the Amazon Marketing Cloud (AMC) team for paid features.</p>
+                    <div class="experience-title">Software Engineer</div>
                     <ul>
-                        <li>Engineered an observability framework for Spark applications on AWS EMR, handling over 500 spark tasks and processing petabytes of data.</li>
-                        <li>Developed analytics dashboards in AWS Quicksight for real-time monitoring of Spark applications.</li>
-                        <li>Implemented a cloud infrastructure with AWS CDK in TypeScript, integrating with production and beta pipelines.</li>
+                        <li>Led the development of abilio.ai, an AI-powered business assistant platform for
+                            Brazilian franchisees, serving 40+ users and processing hundreds of daily LLM API
+                            calls for franchise operations support.</li>
+                        <li>Developed a full-stack application with Python/Flask backend and React frontend,
+                            implementing a RAG pipeline that processed document uploads, vectorized content
+                            using embeddings, and stored knowledge in Pinecone vector database for intelligent query
+                            retrieval.</li>
+                        <li>Designed dual-knowledge-base chat system with Pinecone for vector storage, enabling
+                            AI-powered
+                            responses grounded in both general franchise operations knowledge (administrative,
+                            financial, bureaucratic)
+                            and franchise-specific documents, handling 30+ daily chat sessions.</li>
                     </ul>
                     <div class="skills-note">
-                        Scala, TypeScript, SQL, AWS (Glue, S3, Quicksight, Athena, Lambda, CDK), Software Engineering, Data Engineering
+                        JavaScript, Python, HTML, CSS, RAG, Vector Databases, Pinecone, LLM API
                     </div>
                 </div>
 
                 <div class="experience-item">
                     <div class="experience-header">
-                        <h4>Moises.ai</h4>
+                        <div class="company-info">
+                            <img src="images/Amazon-logo.jpg" alt="Amazon logo" class="company-logo">
+                            <h4><span class="company-amazon">Amazon Ads</span></h4>
+                        </div>
+                        <span class="experience-date">May 2023 - Aug 2023</span>
+                    </div>
+                    <div class="experience-title">Data Engineer Intern</div>
+                    <p>Interning as a Data Engineer at the Amazon Marketing Cloud (AMC) team for paid features.</p>
+                    <ul>
+                        <li>Engineered an observability framework in Scala for Spark jobs on AWS EMR, monitoring 500+
+                            daily Spark
+                            tasks processing petabytes of data, providing detailed performance insights into shuffle,
+                            spill, and
+                            task execution metrics for distributed data pipelines.</li>
+                        <li>Developed real-time analytics dashboards in Quicksight, monitoring Spark application health,
+                            tracking performance metrics across 2 production pipelines, allowing the team to proactively
+                            identify performance bottlenecks.</li>
+                        <li>Implemented cloud infrastructure with AWS CDK in TypeScript, designing automated deployment
+                            pipelines
+                            integrated with production and beta environments, enabling near real-time data ingestion and
+                            processing
+                            of hundreds of records per minute for applications serving millions of customer data views.
+                        </li>
+                    </ul>
+                    <div class="skills-note">
+                        Scala, TypeScript, SQL, AWS (Glue, S3, Quicksight, Athena, Lambda, CDK), Software Engineering,
+                        Data Engineering
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div class="company-info">
+                            <img src="images/moises-logo.jpeg" alt="Moises logo" class="company-logo">
+                            <h4><span class="company-moises">Moises.ai</span></h4>
+                        </div>
                         <span class="experience-date">June 2022 - August 2022</span>
                     </div>
                     <div class="experience-title">Product Data Analyst Intern</div>
-                    <p>Worked on the Data Platform team focusing on delivering analysis and building dashboards for the company's new product. Orchestrated an A/B testing analysis for a novel AI-assisted songwriting editor across 2,000 users over three months.</p>
+                    <p>Worked on the Data Platform team focusing on delivering analysis and building dashboards for the
+                        company's new product. Orchestrated an A/B testing analysis for a novel AI-assisted songwriting
+                        editor across 2,000 users over three months.</p>
                     <ul>
-                        <li>Delivered Product data analysis using Pandas, Numpy and Matplotlib Libraries.</li>
-                        <li>Built product dashboards for key stakeholders using Tableau.</li>
-                        <li>Performed Hypothesis tests using One-Way Anova, Kruskall Wallis test and post-hoc test on A/B test data.</li>
-                        <li>Created and maintained SQL queries using Google Big Query.</li>
+                        <li>Orchestrated A/B testing analysis for a novel AI-assisted songwriting editor across 2,000 users over three months,
+using Python (NumPy, SciPy, Pandas) and statistical methods including One-Way ANOVA, Kruskal-Wallis, and
+post-hoc tests to evaluate model efficacy and measure feature impact.</li>
+                        <li> Developed and maintained SQL ETL pipeline in Google BigQuery with optimized queries and CRUD operations,
+processing 500K+ daily user events to enable streamlined data preparation for Tableau dashboards monitoring user
+engagement and demographics.</li>
+                        <li>Built product analytics dashboards in Tableau for key stakeholders monthly reports synthesizing insights on user
+behavior, directly informing product development decisions and feature prioritization for the AI music startup.</li>
                     </ul>
                     <div class="skills-note">
                         Python Libraries (Pandas, Numpy, Matplotlib), Google Big Query, SQL, Tableau
@@ -403,21 +534,30 @@
 
                 <div class="experience-item">
                     <div class="experience-header">
-                        <h4>New York University</h4>
+                        <div class="company-info">
+                            <img src="images/nyu-logo.png" alt="NYU logo" class="company-logo">
+                            <h4><span class="company-nyu">New York University</span></h4>
+                        </div>
                         <span class="experience-date">September 2021 - Dec 2023</span>
                     </div>
                     <div class="experience-title">Intro to Programming Tutor & Resident Assistant</div>
                     <p><strong>Programming Tutor:</strong></p>
                     <ul>
-                        <li>Conducted over 150 tutoring sessions across 2-3 classes per semester, supporting around 800 students annually with programming concepts.</li>
-                        <li>Provided flexible tutoring services, including in-person and drop-in Zoom meetings for 10+ hours weekly.</li>
-                        <li>Enhanced student engagement and understanding in Python programming through personalized instruction.</li>
+                        <li>Conducted over 150 tutoring sessions across 2-3 classes per semester, supporting around 800
+                            students annually with programming concepts.</li>
+                        <li>Provided flexible tutoring services, including in-person and drop-in Zoom meetings for 10+
+                            hours weekly.</li>
+                        <li>Enhanced student engagement and understanding in Python programming through personalized
+                            instruction.</li>
                     </ul>
                     <p><strong>Resident Assistant:</strong></p>
                     <ul>
-                        <li>Created, marketed, and led student-centered hall events to promote social, educational, and emotional growth.</li>
-                        <li>Promoted interaction and construction of social networks between community and residents.</li>
-                        <li>Implemented and enforced College and Campus Living policies, promoting academic excellence.</li>
+                        <li>Created, marketed, and led student-centered hall events to promote social, educational, and
+                            emotional growth.</li>
+                        <li>Promoted interaction and construction of social networks between community and residents.
+                        </li>
+                        <li>Implemented and enforced College and Campus Living policies, promoting academic excellence.
+                        </li>
                     </ul>
                     <div class="skills-note">
                         Python programming, Teaching, Leadership, Communication, Conflict Resolution
@@ -428,7 +568,10 @@
             <section class="section">
                 <h2>Education</h2>
                 <div class="education-item">
-                    <h3>New York University</h3>
+                    <div class="education-header">
+                        <img src="images/nyu-logo.png" alt="NYU logo" class="education-logo">
+                        <h3><span class="company-nyu">New York University</span></h3>
+                    </div>
                     <span class="education-date">Jan 2021 - Dec 2023</span>
                     <h6>Bachelor of Science in Computer Science and Data Science</h6>
                 </div>
@@ -493,4 +636,5 @@
         </div>
     </footer>
 </body>
+
 </html>
