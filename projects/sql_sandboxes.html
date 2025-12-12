@@ -306,32 +306,174 @@
             color: var(--white);
         }
         
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: var(--light-gray);
+            padding: 1.5rem;
+            border-left: 3px solid var(--accent-blue);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .stat-card:nth-child(1) { animation-delay: 0.1s; }
+        .stat-card:nth-child(2) { animation-delay: 0.2s; }
+        .stat-card:nth-child(3) { animation-delay: 0.3s; }
+        .stat-card:nth-child(4) { animation-delay: 0.4s; }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-blue);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--medium-gray);
+            font-weight: 500;
+        }
+
+        /* Feature Cards */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .feature-card {
+            background: var(--white);
+            border: 1px solid var(--border-light);
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .feature-card:nth-child(1) { animation-delay: 0.2s; }
+        .feature-card:nth-child(2) { animation-delay: 0.3s; }
+        .feature-card:nth-child(3) { animation-delay: 0.4s; }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border-color: var(--accent-blue);
+        }
+
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--accent-blue);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .feature-card h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: var(--primary-black);
+        }
+
+        .feature-card p {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            margin: 0;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        .fade-in-delay-1 { animation-delay: 0.3s; }
+        .fade-in-delay-2 { animation-delay: 0.5s; }
+        .fade-in-delay-3 { animation-delay: 0.7s; }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, var(--light-gray) 0%, var(--white) 100%);
+            border-left: 4px solid var(--accent-green);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .highlight-box p {
+            margin: 0;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .grid-container {
                 padding: 0 20px;
             }
-            
+
             .nav-links {
                 gap: 1.5rem;
             }
-            
+
             .article-header h1 {
                 font-size: 1.8rem;
                 flex-direction: column;
                 gap: 0.5rem;
             }
-            
+
             .action-links {
                 flex-direction: column;
             }
-            
+
             .cta-section {
                 padding: 1.5rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-number {
+                font-size: 1.5rem;
             }
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
 </head>
 <body>
     <div class="grid-container">
@@ -361,58 +503,106 @@
 
         <main class="main-content">
             <div class="action-links">
-
-                <a href="https://www.sqlsandboxes.com" target="_blank" class="action-link secondary">
-                    <i class="fas fa-external-link-alt"></i> Live Application
+                <a href="https://www.sqlsandboxes.com" target="_blank" class="action-link primary">
+                    <i class="fas fa-external-link-alt"></i> Visit SQLSandboxes.com
+                </a>
+                <a href="https://github.com/aragaomateus" target="_blank" class="action-link secondary">
+                    <i class="fab fa-github"></i> View on GitHub
                 </a>
             </div>
 
-            <section class="section">
-                <h2>SQLSandboxes: Building an AI-Powered SQL Practice Platform</h2>
+            <section class="section fade-in">
+                <h2>SQLSandboxes: An AI-Powered SQL Learning Platform</h2>
 
-                <h3>Project Overview</h3>
-                <p>SQLSandboxes is a Next.js 15 web application that eliminates the friction of SQL practice by providing an interactive environment where users can execute queries against realistic datasets without any local setup. The platform leverages client-side SQL execution, AI-powered dataset generation, and a comprehensive learning system to make SQL accessible to everyone from beginners to interview candidates.</p>
+                <div class="highlight-box">
+                    <p>A Next.js web application that eliminates the friction of SQL practice by providing an interactive browser-based environment where users can execute queries against realistic datasets without any local setup. Built with modern web technologies, AI-powered features, and a comprehensive learning system.</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-number">511+</span>
+                        <span class="stat-label">Registered Users</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">~200</span>
+                        <span class="stat-label">Daily Queries</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">2,500+</span>
+                        <span class="stat-label">Total Visitors</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">18+</span>
+                        <span class="stat-label">SQL Tutorials</span>
+                    </div>
+                </div>
 
                 <h3>The Problem & Solution</h3>
                 <p>Traditional SQL learning has a massive activation energy problem. Students spend hours setting up PostgreSQL, dealing with PATH variables, and VPN connections before writing a single query. Professionals need quick prototyping environments but can't risk experimental queries on staging databases. Interview candidates practice on generic employee tables that don't prepare them for real-world schemas.</p>
-                <p>SQLSandboxes solves this by providing zero-setup SQL practice with realistic, diverse datasets accessible instantly in any browser.</p>
 
-                <h3>Technical Architecture</h3>
+                <p>SQLSandboxes solves this by providing zero-setup SQL practice with realistic, diverse datasets accessible instantly in any browser. Users can write queries and see instant results without installing anything.</p>
+
+                <h3 class="fade-in-delay-1">Core Features</h3>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-database"></i></div>
+                        <h4>Interactive SQL Editor</h4>
+                        <p>In-browser code environment with 10+ realistic datasets from e-commerce, finance, and HR sectors. Execute queries immediately with syntax highlighting and instant result display.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-briefcase"></i></div>
+                        <h4>Case Studies</h4>
+                        <p>Scenario-based learning focused on real business problems including revenue analysis, cohort studies, and conversion optimization drawn from major technology companies.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-users"></i></div>
+                        <h4>Interview Preparation</h4>
+                        <p>Specialized coaching covering company-specific SQL questions from Google, Amazon, and Microsoft with detailed solutions and optimization tips tailored to target companies.</p>
+                    </div>
+                </div>
+
+                <h3 class="fade-in-delay-2">Technical Architecture</h3>
 
                 <h4>Core Stack</h4>
                 <ul>
                     <li><strong>Frontend:</strong> Next.js 15 with App Router, React 19, TypeScript</li>
-                    <li><strong>Database Engine:</strong> SQL.js (SQLite via WebAssembly) for client-side execution</li>
+                    <li><strong>Database Engine:</strong> DuckDB via WebAssembly for client-side execution with superior performance</li>
                     <li><strong>Backend:</strong> Supabase for user management, authentication, and analytics</li>
                     <li><strong>Storage:</strong> AWS S3 for sample database definitions and custom datasets</li>
-                    <li><strong>Styling:</strong> Tailwind CSS 4 with custom components</li>
-                    <li><strong>AI Integration:</strong> OpenAI API for intelligent dataset generation</li>
+                    <li><strong>Styling:</strong> Tailwind CSS 4 with custom component library</li>
+                    <li><strong>AI Integration:</strong> OpenAI API for intelligent dataset generation and query assistance</li>
+                    <li><strong>Hosting:</strong> Vercel for frontend deployment with edge optimization</li>
                 </ul>
 
                 <h4>Key Architectural Decisions</h4>
-                <p><strong>Client-Side SQL Execution:</strong> Using SQL.js WebAssembly eliminates server load and provides instant query feedback. Users can execute complex queries with joins, window functions, and CTEs without any backend processing.</p>
-                <p><strong>Hybrid Storage Strategy:</strong> Sample databases stored as JSON definitions in S3, converted to SQL DDL by a custom DatabaseLoader class. Custom user datasets leverage Supabase metadata with S3 file storage for scalability.</p>
-                <p><strong>Progressive Authentication:</strong> Guest users get 3 free queries before signup, tracked via localStorage. Authenticated users get unlimited queries and custom dataset creation capabilities.</p>
+                <p><strong>Client-Side SQL Execution with DuckDB:</strong> Migrated from SQL.js to DuckDB WebAssembly for superior performance and PostgreSQL-compatible syntax. This eliminates server load while providing instant query feedback. Users can execute complex queries with joins, window functions, CTEs, and advanced analytical functions without any backend processing.</p>
 
-                <h3>Early Traction & Marketing Experiments</h3>
-                <p>In the first month of development and advertising, SQLSandboxes achieved impressive initial traction:</p>
+                <p><strong>Hybrid Storage Strategy:</strong> Sample databases stored as optimized JSON definitions in S3, converted to SQL DDL by a custom DatabaseLoader class. Custom user datasets leverage Supabase metadata with S3 file storage for scalability and cost efficiency.</p>
 
-                <h4>Traffic Metrics</h4>
+                <p><strong>Progressive Authentication:</strong> Guest users can explore the platform immediately before signup. Authenticated users unlock unlimited queries, custom dataset creation, and access to premium features including case studies and interview preparation content.</p>
+
+                <h3 class="fade-in-delay-3">Growth & Market Validation</h3>
+                <p>SQLSandboxes has demonstrated strong product-market fit with rapid early adoption and engagement metrics that validate the core value proposition.</p>
+
+                <h4>Platform Metrics</h4>
                 <ul>
-                    <li>2,525 distinct visitors</li>
-                    <li>3,144 total page views</li>
-                    <li>30,000+ ad impressions</li>
-                    <li>5,000+ ad clicks</li>
+                    <li><strong>511+ Registered Users:</strong> Strong signup conversion indicating clear value proposition</li>
+                    <li><strong>Approximately 200 Daily Queries:</strong> Consistent platform engagement across user base</li>
+                    <li><strong>2,525 Distinct Visitors:</strong> Organic and paid traffic in initial launch phase</li>
+                    <li><strong>3,144 Total Page Views:</strong> Users exploring multiple features and tutorials</li>
                 </ul>
 
-                <h4>Advertising Channel Performance</h4>
+                <h4>Marketing Experiments</h4>
+                <p>The platform serves as a comprehensive learning laboratory for customer acquisition strategies, testing multiple advertising channels with measurable outcomes.</p>
+
                 <ul>
-                    <li><strong>Google Ads:</strong> Strong performance with targeted SQL-related keywords</li>
-                    <li><strong>Reddit Ads:</strong> Effective reach in programming and data communities</li>
-                    <li><strong>Upcoming Tests:</strong> Meta (Facebook/Instagram) ads and other platforms</li>
+                    <li><strong>Google Ads:</strong> 30,000+ impressions with 5,000+ clicks targeting SQL practice and learning keywords. Strong performance on high-intent search terms like "practice sql online" and "sql interview prep".</li>
+                    <li><strong>Reddit Ads:</strong> Effective reach in r/learnprogramming, r/SQL, and r/datascience communities with engagement from students and professionals.</li>
+                    <li><strong>Content Marketing:</strong> 18+ SEO-optimized tutorial pages driving organic traffic for long-tail keywords.</li>
+                    <li><strong>Planned Expansion:</strong> Meta ads, LinkedIn Ads, and strategic partnerships with bootcamps and educational platforms.</li>
                 </ul>
 
-                <p>This project serves as both a technical challenge and a real-world laboratory for learning customer acquisition in the internet business space. Each advertising experiment provides insights into conversion funnels, audience targeting, and cost-per-acquisition optimization.</p>
+                <p>Each channel provides insights into conversion funnels, audience segmentation, cost-per-acquisition optimization, and long-term user retention strategies.</p>
 
                 <h3>Vision: Custom Learning Environments</h3>
                 <p>The ultimate goal extends far beyond a SQL practice tool. SQLSandboxes aims to become a comprehensive, personalized SQL education platform where users can:</p>
@@ -435,55 +625,75 @@
 
                 <h3>Feature Development Journey</h3>
 
-                <h4>✅ Completed Features</h4>
+                <h4>Completed Features</h4>
                 <p><strong>Infrastructure & Core Functionality:</strong></p>
                 <ul>
-                    <li>✅ S3 integration with custom database loader</li>
-                    <li>✅ Sample database expansion (6 diverse datasets covering e-commerce, analytics, HR, etc.)</li>
-                    <li>✅ Comprehensive error logging system using Supabase</li>
-                    <li>✅ User authentication and profile management</li>
-                    <li>✅ Query logging and analytics pipeline</li>
-                    <li>✅ Feedback collection system</li>
+                    <li>S3 integration with custom database loader for scalable dataset storage</li>
+                    <li>Sample database expansion to 10+ diverse datasets covering e-commerce, analytics, HR, finance, and social media</li>
+                    <li>Comprehensive error logging system using Supabase for production monitoring</li>
+                    <li>User authentication and profile management with email verification</li>
+                    <li>Query logging and analytics pipeline tracking user behavior and performance</li>
+                    <li>Feedback collection system integrated across platform touchpoints</li>
+                    <li>Migration to DuckDB WebAssembly for enhanced performance</li>
+                    <li>Google OAuth integration for streamlined signup process</li>
                 </ul>
 
                 <p><strong>User Experience:</strong></p>
                 <ul>
-                    <li>✅ Random database selection for new visitors to showcase variety</li>
-                    <li>✅ Auto-execution with engaging default queries for first-time users</li>
-                    <li>✅ User acquisition tracking in registration flow</li>
-                    <li>✅ SEO-optimized learning content (12+ tutorial pages covering basics to advanced concepts)</li>
+                    <li>Random database selection for new visitors to showcase platform variety</li>
+                    <li>Auto-execution with contextually engaging default queries for first-time users</li>
+                    <li>User acquisition tracking in registration flow to identify best marketing channels</li>
+                    <li>SEO-optimized learning content with 18+ tutorial pages covering basics to advanced concepts</li>
+                    <li>Dark mode implementation for improved user experience</li>
+                    <li>Locale tracking in query logs to understand geographic distribution</li>
                 </ul>
 
                 <p><strong>Learning System:</strong></p>
                 <ul>
-                    <li>✅ Structured SQL tutorials with interactive examples</li>
-                    <li>✅ Deep-linking integration between tutorials and main editor</li>
-                    <li>✅ Progressive difficulty levels (Basics → Joins → Advanced)</li>
+                    <li>Structured SQL tutorials with interactive, executable examples</li>
+                    <li>Deep-linking integration between tutorials and main SQL editor</li>
+                    <li>Progressive difficulty levels spanning Basics, Joins, Aggregations, and Advanced topics</li>
+                    <li>AI-powered data challenges for custom dataset engagement</li>
+                    <li>Case studies featuring real business scenarios from major tech companies</li>
+                    <li>Interview preparation content with company-specific questions and solutions</li>
                 </ul>
 
-                <h4>🚧 In Progress & Planned Features</h4>
+                <h4>In Progress & Planned Features</h4>
                 <p><strong>Core Platform Improvements:</strong></p>
                 <ul>
-                    <li>Dark mode implementation</li>
-                    <li>Custom dataset creation workflow overhaul</li>
-                    <li>AI-powered data challenges for user engagement</li>
-                    <li>Enhanced landing page showcasing all functionalities</li>
+                    <li>Custom dataset creation workflow overhaul with improved UX</li>
+                    <li>Template-based dataset generation to guide users toward realistic schemas</li>
+                    <li>Enhanced landing pages showcasing all functionalities with A/B testing</li>
+                    <li>Premium pricing modal integration for feature discovery</li>
+                    <li>Achievement system and gamification elements for user retention</li>
                 </ul>
 
                 <p><strong>Security & Performance:</strong></p>
                 <ul>
-                    <li>SQL injection prevention and input sanitization</li>
-                    <li>Schema optimization for S3 data structure</li>
-                    <li>Performance monitoring with PostHog event tracking</li>
+                    <li>SQL injection prevention and comprehensive input sanitization</li>
+                    <li>Schema optimization for S3 data structure with YAML migration</li>
+                    <li>Performance monitoring with PostHog event tracking and analytics</li>
+                    <li>AI-powered penetration testing bots for automated security assessment</li>
+                    <li>Query performance analyzer to identify bottlenecks and optimization opportunities</li>
                 </ul>
 
                 <p><strong>AI-Powered Learning Features:</strong></p>
                 <ul>
-                    <li>Custom learning environment creation</li>
-                    <li>Domain-specific dataset generation with guided templates</li>
-                    <li>Adaptive question generation based on user performance</li>
-                    <li>Natural language to SQL query conversion</li>
-                    <li>Automated assessment and progress tracking</li>
+                    <li>Custom learning environment creation with AI-generated curricula</li>
+                    <li>Domain-specific dataset generation with industry-focused templates</li>
+                    <li>Adaptive question generation based on user performance and skill gaps</li>
+                    <li>Natural language to SQL query conversion for accessibility</li>
+                    <li>Automated assessment and detailed progress tracking with analytics dashboard</li>
+                    <li>AI-powered query optimization suggestions and explanations</li>
+                </ul>
+
+                <p><strong>Platform Expansion:</strong></p>
+                <ul>
+                    <li>CSV and JSON dataset upload functionality for custom data</li>
+                    <li>Sharing capabilities for collaborative learning and query exchange</li>
+                    <li>Portuguese language translation for Brazilian market expansion</li>
+                    <li>Performance comparison tools for different join strategies and query approaches</li>
+                    <li>Real-time transaction data simulator for advanced analytical practice</li>
                 </ul>
 
                 <h3>Customer Acquisition Learning Lab</h3>
@@ -519,53 +729,100 @@
                 <p>To reduce bounce rates and increase activation:</p>
                 <ul>
                     <li>Random database selection showcases platform variety</li>
-                    <li>Contextual, emoji-enhanced default queries instead of basic SELECT *</li>
+                    <li>Contextual, engaging default queries demonstrating real analytical value instead of basic SELECT statements</li>
                     <li>Auto-execution for new visitors with progressive onboarding</li>
                 </ul>
 
                 <h4>Performance Considerations</h4>
                 <ul>
-                    <li>WebAssembly loading optimization for instant query execution</li>
-                    <li>Efficient S3 data structure for fast database loading</li>
-                    <li>Client-side caching strategies for repeated database access</li>
+                    <li><strong>DuckDB WebAssembly Optimization:</strong> Lazy loading and streaming compilation for instant query execution</li>
+                    <li><strong>Efficient S3 Data Structure:</strong> Optimized JSON schemas with YAML migration planned for reduced file sizes</li>
+                    <li><strong>Client-Side Caching:</strong> Smart caching strategies for repeated database access and query history</li>
+                    <li><strong>Edge Deployment:</strong> Vercel edge functions for global low-latency access</li>
                 </ul>
 
-                <h3>Development Status & Future Roadmap</h3>
+                <h3>Current Challenges & Solutions</h3>
 
-                <h4>Current Phase: Foundation Building</h4>
+                <h4>User Retention & Engagement</h4>
+                <p>Data analysis revealed that only 63 out of 153 registered users returned after initial signup, with just 8 users demonstrating consistent multi-session engagement. This activation challenge drives several product development priorities.</p>
+
+                <p><strong>Implemented Solutions:</strong></p>
                 <ul>
-                    <li><strong>Status:</strong> Pre-monetization, focusing on user experience and feature completeness</li>
-                    <li><strong>Priority:</strong> Perfecting the core learning experience before introducing paid features</li>
-                    <li><strong>Timeline:</strong> 3-6 months of feature development and user feedback integration</li>
+                    <li><strong>Random Database Selection:</strong> New visitors see varied datasets on each visit, showcasing platform diversity</li>
+                    <li><strong>Contextual Default Queries:</strong> Engaging, pre-written queries that demonstrate real analytical value instead of basic SELECT statements</li>
+                    <li><strong>Auto-Execution:</strong> First-time users see immediate results, reducing friction to first value</li>
+                    <li><strong>Progressive Onboarding:</strong> Guided tours introducing features incrementally rather than overwhelming users</li>
                 </ul>
 
-                <h4>Future Monetization Strategy</h4>
-                <p>Once the platform reaches product-market fit:</p>
+                <p><strong>Planned Improvements:</strong></p>
                 <ul>
-                    <li><strong>Freemium Model:</strong> Basic practice environments remain free</li>
-                    <li><strong>Premium Tiers:</strong> Advanced AI features, custom learning paths, detailed analytics</li>
-                    <li><strong>Enterprise/Education:</strong> Classroom management tools, progress tracking, custom curricula</li>
+                    <li>AI-powered data challenges to maintain engagement with custom datasets</li>
+                    <li>Gamification elements including achievements and skill progression tracking</li>
+                    <li>Email nurture campaigns with personalized learning content</li>
+                    <li>Session-triggered feedback modals to gather user insights</li>
+                </ul>
+
+                <h3>Development Status & Roadmap</h3>
+
+                <h4>Current Phase: Growth Optimization</h4>
+                <ul>
+                    <li><strong>Status:</strong> Pre-monetization, focusing on reducing error rates and expanding premium functionality</li>
+                    <li><strong>Priority:</strong> Achieving near-zero daily error rate before introducing paid tiers</li>
+                    <li><strong>Focus:</strong> User retention improvements and feature completion based on user feedback</li>
+                </ul>
+
+                <h4>Planned Monetization Approach</h4>
+                <p>The platform will implement a freemium model with tiered access once core metrics stabilize and error rates approach zero.</p>
+
+                <p><strong>Free Tier:</strong></p>
+                <ul>
+                    <li>Access to core SQL editor with 10+ sample databases</li>
+                    <li>Basic tutorials and learning resources</li>
+                    <li>Limited daily query execution</li>
+                </ul>
+
+                <p><strong>Premium Individual ($9-19/month):</strong></p>
+                <ul>
+                    <li>Unlimited AI-powered database generation</li>
+                    <li>Full access to case studies and interview preparation content</li>
+                    <li>Advanced AI features including natural language to SQL conversion</li>
+                    <li>Detailed query performance analytics and optimization suggestions</li>
+                    <li>Unlimited queries and custom dataset storage</li>
+                </ul>
+
+                <p><strong>Team/Enterprise ($40-99/month):</strong></p>
+                <ul>
+                    <li>Classroom management and progress tracking tools</li>
+                    <li>Custom curriculum creation for bootcamps and corporate training</li>
+                    <li>Multi-user collaboration on datasets and queries</li>
+                    <li>Advanced analytics dashboard for instructors</li>
                 </ul>
 
                 <h3>Competitive Positioning</h3>
+                <p>SQLSandboxes differentiates through a combination of modern technology, AI-powered features, and comprehensive learning content.</p>
+
                 <ul>
-                    <li><strong>vs. DB Fiddle:</strong> Winner on speed-to-value. Users get populated relational databases in seconds vs. manual table creation.</li>
-                    <li><strong>vs. DataLemur:</strong> Winner on personalization. Custom learning environments vs. fixed problem sets.</li>
-                    <li><strong>vs. SQL Fiddle:</strong> Winner on user experience. Modern AI-enhanced interface vs. dated manual approach.</li>
+                    <li><strong>vs. DB Fiddle:</strong> Wins on speed-to-value and user experience. Users get fully populated, realistic relational databases in seconds versus manual CREATE TABLE statements. Modern interface with AI-enhanced features versus dated functionality.</li>
+                    <li><strong>vs. DataLemur:</strong> Wins on flexibility and personalization. Custom learning environments with AI-generated datasets versus fixed problem sets. Users can practice on domains relevant to their career interests.</li>
+                    <li><strong>vs. SQL Fiddle:</strong> Wins on technology and features. DuckDB WebAssembly execution, modern React interface, and AI integration versus legacy architecture. Comprehensive learning system versus basic query execution.</li>
+                    <li><strong>vs. StrataScratch:</strong> More accessible pricing model and broader feature set. Focus on learning journey from beginner to expert versus primarily interview-prep oriented.</li>
                 </ul>
 
                 <h3>Long-Term Vision</h3>
-                <p>SQLSandboxes represents the future of technical education: personalized, adaptive, and immediately practical. The goal is to transform SQL learning from a frustrating setup nightmare into an engaging, game-like experience where users can practice on datasets that mirror their career interests.</p>
-                <p>The platform aims to bridge the gap between academic SQL teaching and real-world database skills, preparing users not just to pass interviews, but to excel in data-driven roles across any industry.</p>
+                <p>SQLSandboxes aims to transform SQL education from a frustrating setup nightmare into an engaging, immediately practical learning experience. The platform bridges the gap between academic SQL teaching and real-world database skills, preparing users not just to pass interviews but to excel in data-driven roles across any industry.</p>
 
-                <hr style="margin: 2rem 0; border: 1px solid var(--border-light);">
-                <p><em>This project showcases the intersection of modern web development, AI integration, and growth marketing. It's both a technical achievement and a business experiment, providing hands-on experience in building scalable SaaS platforms while learning the fundamentals of customer acquisition in the digital age.</em></p>
+                <p>The ultimate goal is to create a personalized, adaptive learning platform where users practice on datasets that mirror their specific career interests. Through AI-powered course generation, custom learning paths, and real-world scenario training, SQLSandboxes represents the future of technical education.</p>
+
+                <div class="highlight-box">
+                    <p>This project demonstrates the intersection of modern web development, AI integration, and growth marketing. It serves as both a technical achievement and a business experiment, providing hands-on experience in building scalable SaaS platforms while mastering customer acquisition strategies in the digital age.</p>
+                </div>
             </section>
 
             <div class="cta-section">
-                <h3>Try SQL Sandboxes</h3>
+                <h3>Experience SQLSandboxes</h3>
+                <p>Join 511+ users practicing SQL in the browser. No installation required.</p>
                 <a href="https://www.sqlsandboxes.com" target="_blank" class="action-link primary">
-                    <i class="fas fa-play"></i> Launch Application
+                    <i class="fas fa-rocket"></i> Start Practicing Now
                 </a>
             </div>
         </main>
